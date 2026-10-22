@@ -1,0 +1,307 @@
+.album {
+  display: block;
+  color: var(--color-text);
+}
+
+.album:hover {
+  text-decoration: none;
+}
+
+/* ---------- Escenario: portada + disco ----------
+   La portada ocupa el 84 % del ancho. El 16 % restante es el hueco por el
+   que sale el disco, así que nada se desborda de la tarjeta. */
+.album__stage {
+  position: relative;
+  aspect-ratio: 100 / 84;
+  transform: perspective(900px) translateY(var(--lift, 0px)) rotateX(var(--rx, 0deg))
+    rotateY(var(--ry, 0deg));
+  transition: transform 180ms ease-out;
+}
+
+.album:hover .album__stage,
+.album:focus-visible .album__stage {
+  --lift: -8px;
+}
+
+/* ---------- Portada ---------- */
+.album__cover {
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: 2; /* por encima del disco */
+  width: 84%;
+  height: 100%;
+  overflow: hidden;
+  background: var(--color-surface);
+  border-radius: var(--radius-sm);
+  box-shadow: 0 10px 28px rgba(0, 0, 0, 0.5);
+  transition: box-shadow 300ms ease;
+}
+
+.album:hover .album__cover,
+.album:focus-visible .album__cover {
+  box-shadow: 0 20px 44px rgba(0, 0, 0, 0.6);
+}
+
+/* Cuadrado de color propio de cada álbum, visible mientras no haya portada */
+.album__placeholder {
+  display: grid;
+  place-items: center;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(
+    135deg,
+    hsl(var(--tono) 70% 46%),
+    hsl(calc(var(--tono) + 50) 70% 28%)
+  );
+  font-size: clamp(2.5rem, 6vw, 4rem);
+}
+
+.album__img {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+/* Destello de luz que cruza la portada al pasar el ratón */
+.album__brillo {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    115deg,
+    transparent 35%,
+    rgba(255, 255, 255, 0.3) 50%,
+    transparent 65%
+  );
+  transform: translateX(-130%);
+  transition: transform 800ms ease;
+  pointer-events: none;
+}
+
+.album:hover .album__brillo,
+.album:focus-visible .album__brillo {
+  transform: translateX(130%);
+}
+
+/* Sombra en el "suelo" bajo la portada */
+.album__sombra {
+  position: absolute;
+  bottom: -14px;
+  left: 6%;
+  z-index: 0;
+  width: 72%;
+  height: 18px;
+  background: radial-gradient(ellipse at center, rgba(0, 0, 0, 0.55), transparent 70%);
+  filter: blur(4px);
+  transition:
+    transform 300ms ease,
+    opacity 300ms ease;
+}
+
+.album:hover .album__sombra,
+.album:focus-visible .album__sombra {
+  transform: scaleX(1.1);
+  opacity: 0.7;
+}
+
+/* ---------- Disco ----------
+   Mide un 92 % del alto de la portada y está detrás de ella.
+   Al salir se desplaza un 26 % de su propio ancho (queda justo dentro de la tarjeta). */
+.album__disc {
+  position: absolute;
+  top: 4%;
+  left: 2.52%;
+  z-index: 1;
+  width: 77.28%;
+  height: 92%;
+  transform: translateX(0);
+  transition: transform 700ms cubic-bezier(0.2, 0.8, 0.2, 1);
+}
+
+.album:hover .album__disc,
+.album:focus-visible .album__disc {
+  transform: translateX(26%);
+}
+
+/* El giro va en una capa interior para que no se mezcle con el deslizamiento */
+.album__disc-inner {
+  width: 100%;
+  height: 100%;
+  border-radius: 50%;
+  box-shadow: 0 6px 18px rgba(0, 0, 0, 0.5);
+  background:
+    /* agujero central con borde */
+    radial-gradient(
+      circle,
+      var(--color-bg) 0 8%,
+      rgba(255, 255, 255, 0.55) 8% 10%,
+      transparent 10.5%
+    ),
+    /* aro interior del disco */
+    radial-gradient(
+      circle,
+      transparent 0 22%,
+      rgba(0, 0, 0, 0.3) 22.5% 23.5%,
+      transparent 24%
+    ),
+    /* brillo metálico con un toque de color de la marca */
+    conic-gradient(
+      from 0deg,
+      #e8e8f4,
+      #8e8eb4,
+      #f6f6ff,
+      var(--color-accent),
+      #dcdcec,
+      var(--color-primary),
+      #f6f6ff,
+      #8e8eb4,
+      #e8e8f4
+    );
+}
+
+/* Aviso al aparecer: el disco asoma y da una vuelta, y vuelve a esconderse.
+   Con "backwards" no se queda fijo al terminar, así que el hover sigue mandando. */
+.album.is-visible .album__disc {
+  animation: disco-asoma 1500ms ease-in-out var(--asoma, 900ms) 1 backwards;
+}
+
+.album.is-visible .album__disc-inner {
+  animation: disco-gira 1500ms ease-in-out var(--asoma, 900ms) 1 backwards;
+}
+
+/* Al pasar el ratón gira sin parar (va después para ganar a la regla anterior) */
+.album:hover .album__disc-inner,
+.album:focus-visible .album__disc-inner {
+  animation: disco-gira 2.4s linear infinite;
+}
+
+@keyframes disco-asoma {
+  0%,
+  100% {
+    transform: translateX(0);
+  }
+  45%,
+  60% {
+    transform: translateX(18%);
+  }
+}
+
+@keyframes disco-gira {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+/* ---------- Texto ---------- */
+.album__info {
+  position: relative;
+  z-index: 1;
+  padding-top: var(--space-4);
+}
+
+.album__titulo {
+  position: relative;
+  display: inline-block;
+  margin: 0 0 var(--space-1);
+  font-size: var(--font-size-lg);
+  overflow-wrap: anywhere;
+}
+
+/* Subrayado de colores que crece al pasar el ratón */
+.album__titulo::after {
+  content: '';
+  position: absolute;
+  bottom: -3px;
+  left: 0;
+  width: 100%;
+  height: 3px;
+  background: var(--gradient-brand);
+  border-radius: 2px;
+  transform: scaleX(0);
+  transform-origin: left;
+  transition: transform 350ms ease;
+}
+
+.album:hover .album__titulo::after,
+.album:focus-visible .album__titulo::after {
+  transform: scaleX(1);
+}
+
+.album__datos {
+  margin: 0;
+  color: var(--color-muted);
+  font-size: var(--font-size-sm);
+}
+
+.album__ver {
+  display: inline-block;
+  margin-top: var(--space-2);
+  color: var(--color-primary);
+  font-size: var(--font-size-sm);
+  font-weight: 700;
+  opacity: 0;
+  transform: translateX(-8px);
+  transition:
+    opacity 250ms ease,
+    transform 250ms ease;
+}
+
+.album:hover .album__ver,
+.album:focus-visible .album__ver {
+  opacity: 1;
+  transform: none;
+}
+
+.album:focus-visible {
+  outline-offset: 8px;
+  border-radius: var(--radius-sm);
+}
+
+/* ---------- Pantallas táctiles: no hay "pasar el ratón" ----------
+   El disco se queda asomando un poco, sin girar, y "Ver canciones" siempre se ve. */
+@media (hover: none) {
+  .album__disc {
+    transform: translateX(14%);
+  }
+
+  .album__ver {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+/* ---------- Movimiento reducido: sin giros, destellos ni inclinación ---------- */
+@media (prefers-reduced-motion: reduce) {
+  .album__stage,
+  .album__cover,
+  .album__disc,
+  .album__brillo,
+  .album__sombra,
+  .album__titulo::after,
+  .album__ver {
+    transition: none;
+  }
+
+  .album.is-visible .album__disc,
+  .album.is-visible .album__disc-inner,
+  .album:hover .album__disc-inner,
+  .album:focus-visible .album__disc-inner {
+    animation: none;
+  }
+}
+/* Cuando la imagen del disco ya cargó, se quita el disco dibujado con CSS */
+.album__disc-inner--img {
+  background: none;
+}
+
+/* La imagen del disco, recortada en círculo (gira con la capa interior) */
+.album__disc-img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  border-radius: 50%;
+  object-fit: cover;
+}
+

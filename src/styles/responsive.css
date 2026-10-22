@@ -1,0 +1,314 @@
+/* Reglas compartidas para teléfono, tablet y pantallas amplias. */
+html, body, #root { min-width: 320px; max-width: 100%; }
+html, body, #root, .layout, .layout__main { overflow-x: clip; }
+img, video, iframe, canvas, svg { max-width: 100%; }
+button, input, select, textarea { max-width: 100%; }
+.container { width: 100%; padding-inline: clamp(14px, 3vw, 32px); }
+.page { padding-block: clamp(28px, 5vw, 64px); }
+.layout__main > *, .page, .page > *, [class*="__grid"] > *, [class*="__fila"] > *, [class*="__cards"] > * { min-width: 0; }
+h1, h2, h3, p, small, strong, label, [class*="__titulo"], [class*="__texto"] { overflow-wrap: anywhere; }
+
+/* Menú compacto en tablet y móvil para evitar que la navegación se apriete. */
+@media (max-width: 920px) {
+  .header { height: auto; min-height: var(--header-height); }
+  .header__inner { min-height: var(--header-height); gap: 12px; }
+  .header__toggle { display: flex; flex: 0 0 auto; margin: 0 52px 0 auto; }
+  .nav { position: absolute; top: 100%; right: 0; left: 0; display: none; max-height: calc(100dvh - var(--header-height)); overflow-y: auto; padding: 10px clamp(14px, 4vw, 28px) 18px; border-bottom: 1px solid var(--color-border); background: color-mix(in srgb, var(--ui-shell-color) 98%, transparent); backdrop-filter: blur(18px); }
+  .nav.nav--abierto { display: block; }
+  .nav__lista { display: grid; gap: 3px; margin: 0; padding: 0; }
+  .nav__link { width: 100%; min-height: 44px; padding: 11px 12px; }
+  .nav-comunidad { flex-wrap: wrap; justify-content: flex-start; margin: 8px 0 0; padding: 12px 8px 2px; border-top: 1px solid var(--color-border); border-left: 0; }
+  .disco__fila { --cols: 2; --gap: clamp(20px, 4vw, 36px); }
+  .akelarre-hero, .nina-hero, .dragon-hero, .nave-hero, .grx-hero { grid-template-columns: minmax(0, 1fr); gap: clamp(28px, 6vw, 48px); }
+  .akelarre-disco-layout, .nina-disco-layout, .dragon-disco-layout, .nave-disco-layout, .grx-disco-layout, .album6-page .grx-disco-layout { grid-template-columns: minmax(0, 1fr); gap: 24px; }
+  .akelarre-seccion--colaboraciones, .nina-disco-layout > .nina-seccion--colaboraciones, .dragon-seccion--colaboraciones, .nave-seccion--colaboraciones, .grx-disco-layout > .grx-seccion--colaboraciones { margin-top: 0; padding-left: 0; border-left: 0; }
+  .akelarre-invitados, .nina-invitados, .dragon-invitados, .nave-invitados, .grx-invitados { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+}
+
+@media (max-width: 700px) {
+  .container { padding-inline: 16px; }
+  .page { padding-block: 28px 42px; }
+  .home__seccion { padding-block: 42px; }
+  .home__grid { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 12px; }
+  .home__grid .game-card { min-height: 220px; padding: 18px 14px; }
+  .hero { min-height: min(760px, calc(100svh - var(--header-height))); padding: 56px 16px 92px; }
+  .hero__inner { width: 100%; }
+  .hero__titulo { font-size: clamp(2.7rem, 14vw, 5rem); }
+  .hero__etiqueta { flex-wrap: wrap; justify-content: center; max-width: 100%; }
+  .cta { width: 100%; }
+  .jugar__grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .daily-duel__cards { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .daily-duel__card { min-height: 250px; padding: 22px 14px; }
+  .ranking--top10 { width: calc(100vw - 24px) !important; }
+  .ranking--top10 .ranking__estado { flex-wrap: wrap; justify-content: center; overflow: visible; }
+  .ranking--top10 .ranking__opciones ul { overflow-x: auto; justify-content: flex-start; }
+  .disco__fila { --cols: 2; --gap: 24px; gap: 36px 24px; }
+  .disco__item { max-width: 430px; }
+  .singles__lista, .grupo__lista { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .stats__tarjetas { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .akelarre-datos, .nina-datos, .dragon-datos, .nave-datos, .grx-datos { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .akelarre-vecinos, .nina-vecinos, .dragon-vecinos, .nave-vecinos, .grx-vecinos { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 8px; }
+  .album6-filtro-discos { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 8px; }
+  .album6-filtro-discos button { min-width: 0; padding: 10px 6px; }
+}
+
+@media (max-width: 480px) {
+  :root { --header-height: 62px; }
+  .container { padding-inline: 14px; }
+  .page { padding-block: 24px 34px; }
+  .header__logo { gap: 7px; font-size: .98rem; }
+  .nav { padding-inline: 14px; }
+  .nav-comunidad__visitas, .nav-comunidad__like { min-height: 38px; padding-inline: 11px; }
+  h1 { font-size: clamp(1.7rem, 8vw, 2.25rem); }
+  h2 { font-size: clamp(1.3rem, 6vw, 1.75rem); }
+  .hero__titulo { font-size: clamp(2.3rem, 13vw, 3.7rem); }
+  .hero__cuenta .countdown__tiempo { font-size: clamp(2.5rem, 11vw, 3.6rem); letter-spacing: .06em; }
+  .home__grid, .jugar__grid, .daily-duel__cards, .stats__tarjetas, .singles__lista, .grupo__lista { grid-template-columns: minmax(0, 1fr); }
+  .home__grid .game-card { min-height: 0; }
+  .daily-duel__card { min-height: 230px; }
+  .ranking--top10 .ranking__estado { gap: 7px; }
+  .ranking--top10 .ranking__estado > span, .ranking--top10 .ranking__estado > button { padding: 7px 10px; font-size: .78rem; }
+  .ranking--top10 .ranking__fila--1 { width: 42%; }
+  .ranking--top10 .ranking__fila--2 { width: 68%; }
+  .ranking--top10 .ranking__fila--3 { width: 84%; }
+  .ranking--top10 .ranking__fila--4 { width: 100%; }
+  .ranking--top10 .ranking__puesto { min-height: 64px; }
+  .disco__fila { --cols: 1; --gap: 18px; gap: 30px; }
+  .disco__item { width: min(100%, 390px); }
+  .akelarre-invitados, .nina-invitados, .dragon-invitados, .nave-invitados, .grx-invitados { grid-template-columns: minmax(0, 1fr); }
+  .akelarre-pista__fila, .nina-pista__fila, .dragon-pista__fila, .nave-pista__fila, .grx-pista__fila { grid-template-columns: 24px 34px minmax(0, 1fr); gap: 8px; padding: 11px 9px; }
+  .nave-creditos div, .grx-creditos div { grid-template-columns: minmax(0, 1fr); gap: 5px; }
+  .album6-filtro-discos { grid-template-columns: minmax(0, 1fr); }
+  .album6-filtro-discos button { flex-direction: row; justify-content: center; }
+  .footer__main { grid-template-columns: minmax(0, 1fr); }
+}
+
+@media (min-width: 1600px) {
+  .container { max-width: 1440px; }
+  .container.disco { max-width: 1840px; }
+  .page { padding-block: clamp(56px, 5vw, 88px); }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+}
+
+/* Tracklists de Aquelarre, La Niña y El Dragón: número, título fluido y duración.
+   Evita que el título se quede comprimido en una columna estrecha en móvil. */
+@media (max-width: 700px) {
+  .akelarre-page .akelarre-pista__fila,
+  .nina-page .nina-pista__fila,
+  .dragon-page .dragon-pista__fila {
+    grid-template-columns: 28px minmax(0, 1fr) auto;
+    align-items: start;
+    gap: 10px;
+    padding: 13px 12px;
+  }
+
+  .akelarre-page .akelarre-pista__contenido,
+  .nina-page .nina-pista__contenido,
+  .dragon-page .dragon-pista__contenido {
+    min-width: 0;
+  }
+
+  .akelarre-page .akelarre-pista__titulo,
+  .nina-page .nina-pista__titulo,
+  .dragon-page .dragon-pista__titulo {
+    min-width: 0;
+    line-height: 1.4;
+    overflow-wrap: break-word;
+    word-break: normal;
+  }
+
+  .akelarre-page .akelarre-pista__duracion,
+  .nina-page .nina-pista__duracion,
+  .dragon-page .dragon-pista__duracion {
+    grid-column: auto;
+    justify-self: end;
+    white-space: nowrap;
+    padding-top: 1px;
+  }
+
+  .akelarre-seccion__encabezado,
+  .nina-seccion__encabezado,
+  .dragon-seccion__titulo {
+    flex-wrap: wrap;
+    gap: 10px;
+  }
+
+  .akelarre-page .akelarre-invitado,
+  .nina-page .nina-invitado,
+  .dragon-page .dragon-invitado {
+    min-width: 0;
+  }
+}
+
+@media (max-width: 380px) {
+  .akelarre-page,
+  .nina-page,
+  .dragon-page {
+    padding-inline: 12px;
+  }
+
+  .akelarre-page .akelarre-pista__fila,
+  .nina-page .nina-pista__fila,
+  .dragon-page .dragon-pista__fila {
+    grid-template-columns: 23px minmax(0, 1fr) auto;
+    gap: 7px;
+    padding: 11px 8px;
+  }
+
+  .akelarre-page .akelarre-pista__numero,
+  .nina-page .nina-pista__numero,
+  .dragon-page .dragon-pista__numero {
+    font-size: .72rem;
+  }
+
+  .akelarre-page .akelarre-pista__titulo,
+  .nina-page .nina-pista__titulo,
+  .dragon-page .dragon-pista__titulo {
+    font-size: .88rem;
+  }
+
+  .akelarre-page .akelarre-pista__duracion,
+  .nina-page .nina-pista__duracion,
+  .dragon-page .dragon-pista__duracion {
+    font-size: .72rem;
+  }
+}
+
+/* «Cómo se juega»: módulos compactos que se adaptan al ancho disponible. */
+.how__basico {
+  grid-template-columns: repeat(auto-fit, minmax(min(100%, 190px), 1fr));
+  gap: clamp(8px, 1.2vw, 14px);
+}
+.norma {
+  min-width: 0;
+  padding: clamp(11px, 1.25vw, 17px);
+  border-radius: clamp(14px, 1.6vw, 20px);
+}
+.norma__icono {
+  width: clamp(34px, 3.2vw, 44px);
+  height: clamp(34px, 3.2vw, 44px);
+  margin-bottom: 7px;
+  border-radius: 12px;
+}
+.norma__icono svg { width: 22px; height: 22px; }
+.norma__titulo { font-size: clamp(.86rem, 1vw, 1rem); line-height: 1.25; }
+.norma__texto { font-size: clamp(.78rem, .9vw, .88rem); line-height: 1.45; overflow-wrap: anywhere; }
+
+.modo {
+  min-width: 0;
+  padding: clamp(14px, 2.3vw, 30px);
+  border-radius: clamp(16px, 2vw, 24px);
+}
+.modo__cabecera, .modo__cuerpo, .modo__cuerpo > *, .modo__cabecera > div { min-width: 0; }
+.modo__cuerpo { gap: clamp(14px, 2vw, 26px); }
+.pasos-modo li, .datos__fila, .consejo { min-width: 0; overflow-wrap: anywhere; }
+
+.faq {
+  width: min(100%, 720px);
+  min-width: 0;
+  gap: clamp(6px, .8vw, 10px);
+}
+.faq__item { box-sizing: border-box; width: 100%; min-width: 0; overflow: hidden; }
+.faq__item summary {
+  display: block;
+  box-sizing: border-box;
+  width: 100%;
+  min-width: 0;
+  padding: clamp(9px, 1vw, 13px) 40px clamp(9px, 1vw, 13px) clamp(10px, 1.2vw, 15px);
+  font-size: clamp(.76rem, .9vw, .88rem);
+  line-height: 1.4;
+  letter-spacing: .025em;
+  text-transform: uppercase;
+  overflow-wrap: anywhere;
+}
+.faq__item summary::after { right: 12px; font-size: 1.2rem; }
+.faq__item p {
+  padding: 0 clamp(10px, 1.2vw, 15px) clamp(10px, 1.2vw, 15px);
+  font-size: clamp(.78rem, .9vw, .88rem);
+  line-height: 1.45;
+  overflow-wrap: anywhere;
+}
+
+@media (max-width: 760px) {
+  .how__basico { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .modo__cabecera { gap: 10px; }
+  .modo__icono { width: 44px; height: 44px; border-radius: 14px; }
+  .modo__icono .game-icon-svg { width: 34px; height: 34px; }
+  .modo__titulo { font-size: clamp(1.1rem, 4vw, 1.45rem); }
+  .modo__cuerpo { grid-template-columns: minmax(0, 1fr); }
+  .modo__acciones .btn { min-height: 42px; padding: 10px 16px; font-size: .84rem; }
+}
+
+@media (max-width: 480px) {
+  .how__basico { grid-template-columns: minmax(0, 1fr); gap: 8px; }
+  .norma { display: grid; grid-template-columns: 34px minmax(0, 1fr); column-gap: 10px; align-items: center; padding: 10px 12px; }
+  .norma__icono { grid-row: span 2; width: 34px; height: 34px; margin: 0; }
+  .norma__titulo { margin: 0 0 2px; font-size: .84rem; }
+  .norma__texto { grid-column: 2; font-size: .76rem; }
+  .modo { padding: 13px; }
+  .modo__cabecera { gap: 8px; }
+  .modo__icono { width: 38px; height: 38px; }
+  .modo__resumen { font-size: .82rem; }
+  .faq__item summary { padding-right: 34px; font-size: .72rem; }
+  .faq__item summary::after { right: 9px; font-size: 1.05rem; }
+  .faq__item p { font-size: .76rem; }
+}
+
+/* Índice de «Cómo se juega»: icono y nombre siempre visibles dentro de la barra. */
+.how__indice { display: block; min-width: 0; }
+.how__indice-etiqueta { display: none; }
+.how__indice ul {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(min(100%, 126px), 1fr));
+  justify-content: center;
+  gap: 7px;
+  min-width: 0;
+  overflow: visible;
+}
+.how__indice li { min-width: 0; }
+.how__indice a {
+  box-sizing: border-box;
+  width: 100%;
+  min-width: 0;
+  min-height: 38px;
+  justify-content: flex-start;
+  gap: 6px;
+  padding: 7px 9px;
+  white-space: normal;
+  text-align: left;
+  font-size: clamp(.64rem, .8vw, .74rem);
+  line-height: 1.2;
+}
+.how__indice a .how__indice-icono { flex: 0 0 20px; width: 20px; height: 20px; }
+.how__indice a .how__indice-nombre {
+  display: block;
+  min-width: 0;
+  overflow-wrap: anywhere;
+  text-transform: uppercase;
+}
+.how__indice a[aria-current="page"] { width: 100%; min-width: 0; }
+
+@media (max-width: 640px) {
+  .how__indice {
+    display: block;
+    width: calc(100% + 24px);
+    margin: 0 0 0 -12px;
+    padding: 9px;
+    border-radius: 16px;
+  }
+  .how__indice ul {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(min(100%, 112px), 1fr));
+    gap: 6px;
+    padding: 2px;
+  }
+  .how__indice a { min-height: 36px; padding: 6px 7px; font-size: .62rem; }
+}
+
+@media (max-width: 360px) {
+  .how__indice ul { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .how__indice a { gap: 4px; padding-inline: 6px; font-size: .58rem; }
+}

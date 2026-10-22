@@ -1,0 +1,83 @@
+.nina-transicion-era {
+  position: fixed;
+  z-index: 10000;
+  inset: 0;
+  overflow: hidden;
+  background: linear-gradient(180deg, transparent 5%, color-mix(in srgb, var(--era-transicion), #080e25 28%) 100%);
+  opacity: 0;
+  animation: nina-humo-aparecer 1600ms cubic-bezier(0.22, 0.61, 0.36, 1) forwards;
+  pointer-events: none;
+}
+
+.nina-transicion-era::before,
+.nina-transicion-era::after {
+  position: absolute;
+  inset: -30%;
+  content: "";
+  filter: blur(54px);
+  opacity: 0;
+  will-change: transform, opacity;
+}
+
+.nina-transicion-era::before {
+  background:
+    radial-gradient(ellipse at 50% 84%, color-mix(in srgb, var(--era-transicion), white 20%) 0 12%, transparent 52%),
+    radial-gradient(ellipse at 18% 98%, color-mix(in srgb, var(--era-transicion), white 5%) 0 15%, transparent 48%),
+    radial-gradient(ellipse at 83% 91%, var(--era-transicion) 0 17%, transparent 51%),
+    radial-gradient(ellipse at 42% 100%, color-mix(in srgb, var(--era-transicion), #080e25 12%) 0 18%, transparent 52%);
+  animation: nina-humo-subir 1600ms cubic-bezier(0.22, 0.61, 0.36, 1) forwards;
+}
+
+.nina-transicion-era::after {
+  background:
+    radial-gradient(ellipse at 9% 87%, color-mix(in srgb, var(--era-transicion), white 24%) 0 12%, transparent 45%),
+    radial-gradient(ellipse at 89% 80%, color-mix(in srgb, var(--era-transicion), white 12%) 0 15%, transparent 50%),
+    radial-gradient(ellipse at 62% 69%, color-mix(in srgb, var(--era-transicion), #080e25 12%) 0 19%, transparent 54%);
+  animation: nina-humo-lateral 1600ms 80ms cubic-bezier(0.22, 0.61, 0.36, 1) forwards;
+}
+
+.nina-transicion-era--entrada {
+  opacity: 0.92;
+  animation: nina-humo-desvanecer 1500ms cubic-bezier(0.4, 0, 0.2, 1) forwards;
+}
+
+.nina-transicion-era--entrada::before {
+  opacity: 0.94;
+  transform: translate3d(0, -8vh, 0) scale(1.14);
+  animation: nina-humo-disipar 1500ms cubic-bezier(0.4, 0, 0.2, 1) forwards;
+}
+
+.nina-transicion-era--entrada::after {
+  opacity: 0.9;
+  transform: translate3d(2vw, -6vh, 0) rotate(5deg) scale(1.1);
+  animation: nina-humo-disipar 1500ms 80ms cubic-bezier(0.4, 0, 0.2, 1) forwards;
+}
+
+@keyframes nina-humo-aparecer {
+  0% { opacity: 0; }
+  35% { opacity: 0.52; }
+  72% { opacity: 0.82; }
+  100% { opacity: 0.92; }
+}
+
+@keyframes nina-humo-subir {
+  0% { opacity: 0; transform: translate3d(0, 24vh, 0) scale(0.72); }
+  28% { opacity: 0.56; }
+  62% { opacity: 0.84; transform: translate3d(-1vw, 3vh, 0) scale(1.02); }
+  100% { opacity: 0.94; transform: translate3d(1vw, -8vh, 0) scale(1.14); }
+}
+
+@keyframes nina-humo-lateral {
+  0% { opacity: 0; transform: translate3d(-7vw, 22vh, 0) rotate(-9deg) scale(0.72); }
+  30% { opacity: 0.48; }
+  68% { opacity: 0.82; transform: translate3d(2vw, 2vh, 0) rotate(3deg) scale(1); }
+  100% { opacity: 0.9; transform: translate3d(-2vw, -7vh, 0) rotate(-3deg) scale(1.12); }
+}
+
+@keyframes nina-humo-desvanecer {
+  to { opacity: 0; }
+}
+
+@keyframes nina-humo-disipar {
+  to { opacity: 0; transform: translate3d(0, -20vh, 0) scale(1.48); }
+}

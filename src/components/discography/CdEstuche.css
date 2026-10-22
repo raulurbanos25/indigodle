@@ -1,0 +1,215 @@
+/* ---------- Estuche (proporción de un jewel case real: 142 x 125 mm) ---------- */
+.estuche {
+  position: relative;
+  width: 100%;
+  max-width: 300px;
+  aspect-ratio: 142 / 125;
+  perspective: 1200px;
+  perspective-origin: 15% 50%;
+  transition: transform 300ms ease;
+}
+
+.estuche__sombra {
+  position: absolute;
+  bottom: -14px;
+  left: 8%;
+  z-index: 0;
+  width: 84%;
+  height: 16px;
+  background: radial-gradient(ellipse at center, rgba(0, 0, 0, 0.55), transparent 70%);
+  filter: blur(4px);
+}
+
+/* Fondo del estuche, a la derecha del lomo */
+.estuche__bandeja {
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 7%;
+  z-index: 1;
+  background: linear-gradient(135deg, rgba(255, 255, 255, 0.09), rgba(255, 255, 255, 0.02));
+  border: 1px solid rgba(255, 255, 255, 0.18);
+  border-left: 0;
+  border-radius: 0 5px 5px 0;
+  box-shadow: 0 14px 30px rgba(0, 0, 0, 0.45);
+}
+
+/* Lomo con el año escrito en vertical */
+.estuche__lomo {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  z-index: 2;
+  display: grid;
+  place-items: center;
+  width: 7%;
+  background:
+    linear-gradient(to right, rgba(255, 255, 255, 0.28), rgba(255, 255, 255, 0.1)),
+    rgba(255, 255, 255, 0.04);
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  border-radius: 5px 0 0 5px;
+}
+
+.estuche__anio {
+  color: rgba(255, 255, 255, 0.75);
+  font-size: 0.62rem;
+  font-weight: 800;
+  letter-spacing: 0.1em;
+  writing-mode: vertical-rl;
+  transform: rotate(180deg);
+}
+
+/* ---------- CD ----------
+   Mide un 84,5 % del ancho del estuche (el 96 % de su alto) y queda centrado
+   en el hueco que deja el lomo. */
+.estuche__cd {
+  position: absolute;
+  top: 2%;
+  left: 11.25%;
+  z-index: 2;
+  width: 84.5%;
+  aspect-ratio: 1;
+  filter: drop-shadow(0 3px 6px rgba(0, 0, 0, 0.45));
+}
+
+/* Capa que gira: el disco dibujado o la imagen, con el agujero central recortado.
+   Está siempre en marcha pero en pausa: así, al quitar el ratón, se queda donde estaba. */
+.cd__giro {
+  position: absolute;
+  inset: 0;
+  border-radius: 50%;
+  background: conic-gradient(
+    from 0deg,
+    #e8e8f4,
+    #8e8eb4,
+    #f6f6ff,
+    var(--color-accent),
+    #dcdcec,
+    var(--color-primary),
+    #f6f6ff,
+    #8e8eb4,
+    #e8e8f4
+  );
+  -webkit-mask-image: radial-gradient(circle closest-side, transparent 0 12.5%, #000 13%);
+  mask-image: radial-gradient(circle closest-side, transparent 0 12.5%, #000 13%);
+  animation: cd-gira 3.2s linear infinite;
+  animation-play-state: paused;
+}
+
+/* Cuando la imagen ya cargó, se quita el disco dibujado */
+.cd__giro--img {
+  background: none;
+}
+
+.cd__img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  border-radius: 50%;
+  object-fit: cover;
+}
+
+/* Capa fija por encima: lo que se ve a través del agujero (el centro de la bandeja),
+   el aro de plástico transparente y un destello que no gira con el disco */
+.cd__brillo {
+  position: absolute;
+  inset: 0;
+  border-radius: 50%;
+  box-shadow: inset 0 0 0 1.5px rgba(255, 255, 255, 0.35);
+  pointer-events: none;
+  background:
+    radial-gradient(
+      circle closest-side,
+      rgba(0, 0, 0, 0.3) 0 6%,
+      rgba(255, 255, 255, 0.6) 6.5% 10.5%,
+      transparent 11%
+    ),
+    radial-gradient(
+      circle closest-side,
+      transparent 0 12%,
+      rgba(255, 255, 255, 0.9) 12.5% 14%,
+      transparent 14.5%
+    ),
+    radial-gradient(
+      circle closest-side,
+      transparent 0 14.5%,
+      rgba(255, 255, 255, 0.26) 15% 27%,
+      rgba(0, 0, 0, 0.28) 27.5% 29%,
+      transparent 29.5%
+    ),
+    conic-gradient(
+      from 20deg,
+      transparent 0 8%,
+      rgba(255, 255, 255, 0.24) 12%,
+      transparent 18% 50%,
+      rgba(255, 255, 255, 0.18) 58%,
+      transparent 66% 100%
+    );
+}
+
+/* ---------- Tapa transparente ---------- */
+.estuche__tapa {
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 7%;
+  z-index: 3;
+  border: 1.5px solid rgba(255, 255, 255, 0.4);
+  border-radius: 3px 6px 6px 3px;
+  background:
+    linear-gradient(
+      105deg,
+      rgba(255, 255, 255, 0.3) 0%,
+      rgba(255, 255, 255, 0.06) 22%,
+      transparent 40%,
+      rgba(255, 255, 255, 0.14) 58%,
+      transparent 66%
+    ),
+    linear-gradient(180deg, rgba(255, 255, 255, 0.1), transparent 30%, rgba(255, 255, 255, 0.05));
+  box-shadow:
+    inset 0 0 16px rgba(255, 255, 255, 0.1),
+    0 0 0 1px rgba(0, 0, 0, 0.15);
+  transform-origin: left center;
+  transition: transform 800ms cubic-bezier(0.2, 0.8, 0.2, 1);
+  pointer-events: none;
+}
+
+/* Bisagras de la tapa */
+.estuche__tapa::before,
+.estuche__tapa::after {
+  content: '';
+  position: absolute;
+  left: -4px;
+  width: 7px;
+  height: 14%;
+  background: rgba(255, 255, 255, 0.45);
+  border-radius: 2px;
+}
+
+.estuche__tapa::before {
+  top: 8%;
+}
+
+.estuche__tapa::after {
+  bottom: 8%;
+}
+
+@keyframes cd-gira {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .estuche,
+  .estuche__tapa {
+    transition: none;
+  }
+
+  .cd__giro {
+    animation: none;
+  }
+}

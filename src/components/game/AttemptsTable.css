@@ -1,0 +1,44 @@
+.attempts {
+  margin-top: var(--space-4);
+  overflow-x: auto; /* en móvil la tabla se desplaza hacia los lados */
+}
+
+.attempts__table {
+  width: 100%;
+  min-width: 780px;
+  table-layout: fixed;
+  border-collapse: separate;
+  border-spacing: var(--space-2);
+}
+
+.attempts__head {
+  padding: var(--space-2);
+  border-bottom: 2px solid var(--color-border);
+  color: var(--color-muted);
+  font-size: 0.75rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  text-align: center;
+}
+
+.attempts__head--song {
+  width: 190px;
+  text-align: left;
+}
+
+/* Primera celda de cada fila: título de la canción */
+.attempts__song {
+  padding: var(--space-3) var(--space-4);
+  background: var(--color-surface);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-md);
+  font-weight: 700;
+  text-align: left;
+  overflow-wrap: anywhere;
+}
+
+.attempts__empty {
+  padding: var(--space-6);
+  color: var(--color-muted);
+  text-align: center;
+}

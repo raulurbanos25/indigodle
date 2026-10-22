@@ -1,0 +1,51 @@
+.palabra__cabecera {
+  text-align: center;
+  margin-bottom: var(--space-4);
+}
+
+.palabra__etiqueta {
+  display: inline-block;
+  margin: 0 0 var(--space-3);
+  padding: var(--space-1) var(--space-4);
+  background: var(--color-surface-2);
+  border: 1px solid var(--color-border);
+  border-radius: 999px;
+  color: var(--color-muted);
+  font-size: var(--font-size-sm);
+  font-weight: 600;
+}
+
+.palabra__titulo {
+  margin: 0 0 var(--space-2);
+}
+
+.palabra__intro {
+  margin: 0;
+  color: var(--color-muted);
+}
+
+.palabra__aviso {
+  padding: var(--space-3) var(--space-4);
+  border: 1px dashed var(--color-warning);
+  border-radius: var(--radius-md);
+  color: var(--color-warning);
+  font-size: var(--font-size-sm);
+}
+
+.palabra__estado {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: center;
+  gap: var(--space-3) var(--space-6);
+  font-weight: 600;
+}
+
+/* Reserva siempre su altura para que la página no "salte" al aparecer el mensaje */
+.palabra__mensaje {
+  min-height: 1.6em;
+  margin: var(--space-3) 0 0;
+  color: var(--color-warning);
+  text-align: center;
+  font-weight: 600;
+}

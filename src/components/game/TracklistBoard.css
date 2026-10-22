@@ -1,0 +1,73 @@
+.board {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: var(--space-2);
+  margin: var(--space-4) 0 0;
+  padding: 0;
+  list-style: none;
+}
+
+.slot {
+  display: flex;
+  align-items: center;
+  gap: var(--space-3);
+  padding: var(--space-3) var(--space-4);
+  background: var(--color-surface);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-md);
+  color: var(--color-muted);
+  font-weight: 700;
+}
+
+.slot__num {
+  min-width: 1.5rem;
+  color: var(--color-muted);
+  text-align: right;
+}
+
+.slot__title {
+  flex: 1;
+  overflow-wrap: anywhere;
+}
+
+.slot__pista {
+  color: var(--color-muted);
+  font-size: .82em;
+  font-weight: 600;
+  letter-spacing: .14em;
+  opacity: .55;
+}
+
+.slot--acierto {
+  background: var(--color-success);
+  border-color: var(--color-success);
+  color: #06210f;
+  animation: slot-aparece 350ms ease both;
+}
+
+.slot--acierto .slot__num {
+  color: #06210f;
+}
+
+.slot--perdida {
+  background: color-mix(in srgb, var(--color-error) 18%, var(--color-surface));
+  border-color: var(--color-error);
+  color: #ffc2cd;
+}
+
+@keyframes slot-aparece {
+  from {
+    opacity: 0;
+    transform: scale(0.97);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+@media (min-width: 700px) {
+  .board {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}

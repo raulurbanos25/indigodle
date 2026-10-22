@@ -1,0 +1,200 @@
+.hero-disco {
+  width: 100%;
+}
+
+/* La portada ocupa 2/3 del ancho; el resto es el hueco por el que sale el CD */
+.hero-disco__escenario {
+  position: relative;
+  width: 100%;
+  max-width: 520px;
+  aspect-ratio: 3 / 2;
+  margin-inline: auto;
+}
+
+/* ---------- Portada ---------- */
+.hero-disco__caja {
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: 2;
+  width: 66.67%;
+  height: 100%;
+  padding: 0;
+  overflow: hidden;
+  background: var(--color-surface);
+  border: 0;
+  border-radius: var(--radius-sm);
+  box-shadow: 0 20px 50px rgba(0, 0, 0, 0.55);
+  cursor: pointer;
+  transition:
+    transform 300ms ease,
+    box-shadow 300ms ease;
+}
+
+.hero-disco__caja:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 26px 60px rgba(0, 0, 0, 0.6);
+}
+
+.hero-disco__placeholder {
+  display: grid;
+  place-items: center;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(
+    135deg,
+    hsl(var(--tono) 70% 46%),
+    hsl(calc(var(--tono) + 50) 70% 28%)
+  );
+  font-size: clamp(3rem, 10vw, 5rem);
+}
+
+.hero-disco__img {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+/* Destello de luz que cruza la portada al pasar el ratón */
+.hero-disco__destello {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    115deg,
+    transparent 35%,
+    rgba(255, 255, 255, 0.3) 50%,
+    transparent 65%
+  );
+  transform: translateX(-130%);
+  transition: transform 800ms ease;
+  pointer-events: none;
+}
+
+.hero-disco__caja:hover .hero-disco__destello,
+.hero-disco__caja:focus-visible .hero-disco__destello {
+  transform: translateX(130%);
+}
+
+/* ---------- CD ----------
+   Mide el 92 % del alto de la portada y está detrás de ella.
+   Al salir se desplaza un 58,7 % de su propio ancho, hasta el borde del escenario. */
+.hero-disco__cd {
+  position: absolute;
+  top: 4%;
+  left: 2.67%;
+  z-index: 1;
+  width: 61.33%;
+  height: 92%;
+  transform: translateX(0);
+  transition: transform 1100ms cubic-bezier(0.2, 0.8, 0.2, 1);
+}
+
+.hero-disco--abierto .hero-disco__cd {
+  transform: translateX(58.7%);
+}
+
+/* Disco dibujado con CSS (se ve mientras no hay imagen del disco) */
+.hero-disco__giro {
+  width: 100%;
+  height: 100%;
+  border-radius: 50%;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.55);
+  background:
+    radial-gradient(
+      circle,
+      var(--color-bg) 0 8%,
+      rgba(255, 255, 255, 0.55) 8% 10%,
+      transparent 10.5%
+    ),
+    radial-gradient(
+      circle,
+      transparent 0 22%,
+      rgba(0, 0, 0, 0.3) 22.5% 23.5%,
+      transparent 24%
+    ),
+    conic-gradient(
+      from 0deg,
+      #e8e8f4,
+      #8e8eb4,
+      #f6f6ff,
+      var(--color-accent),
+      #dcdcec,
+      var(--color-primary),
+      #f6f6ff,
+      #8e8eb4,
+      #e8e8f4
+    );
+  /* Siempre en marcha, pero en pausa mientras el CD está guardado */
+  animation: hero-gira 7s linear infinite;
+  animation-play-state: paused;
+}
+
+.hero-disco--abierto .hero-disco__giro {
+  animation-play-state: running;
+}
+
+.hero-disco__giro--img {
+  background: none;
+}
+
+.hero-disco__img-cd {
+  display: block;
+  width: 100%;
+  height: 100%;
+  border-radius: 50%;
+  object-fit: cover;
+}
+
+/* Destello fijo por encima del disco: no gira con él, como una luz real */
+.hero-disco__brillo {
+  position: absolute;
+  inset: 0;
+  border-radius: 50%;
+  pointer-events: none;
+  background: conic-gradient(
+    from 20deg,
+    transparent 0 8%,
+    rgba(255, 255, 255, 0.22) 12%,
+    transparent 18% 50%,
+    rgba(255, 255, 255, 0.16) 58%,
+    transparent 66% 100%
+  );
+}
+
+.hero-disco__sombra {
+  position: absolute;
+  bottom: -16px;
+  left: 4%;
+  z-index: 0;
+  width: 62%;
+  height: 20px;
+  background: radial-gradient(ellipse at center, rgba(0, 0, 0, 0.6), transparent 70%);
+  filter: blur(5px);
+}
+
+.hero-disco__ayuda {
+  margin: var(--space-6) 0 0;
+  color: var(--color-muted);
+  font-size: 0.8rem;
+  text-align: center;
+}
+
+@keyframes hero-gira {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .hero-disco__cd,
+  .hero-disco__caja,
+  .hero-disco__destello {
+    transition: none;
+  }
+
+  .hero-disco__giro {
+    animation: none;
+  }
+}

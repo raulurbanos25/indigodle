@@ -1,0 +1,87 @@
+.intruso-board {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: var(--space-3);
+  margin: var(--space-4) 0 0;
+  padding: 0;
+  list-style: none;
+}
+
+.intruso-card {
+  display: flex;
+  align-items: center;
+  width: 100%;
+  min-height: 72px;
+  padding: var(--space-3) var(--space-4);
+  font: inherit;
+  font-weight: 700;
+  text-align: left;
+  color: var(--color-text);
+  background: var(--color-surface);
+  border: 2px solid var(--color-border);
+  border-radius: var(--radius-md);
+  cursor: pointer;
+  transition: transform var(--transition), border-color var(--transition);
+}
+
+.intruso-card:not(:disabled):hover {
+  transform: translateY(-2px);
+  border-color: var(--color-accent);
+}
+
+.intruso-card:disabled {
+  cursor: default;
+}
+
+.intruso-card__title {
+  overflow-wrap: anywhere;
+}
+
+/* Intruso encontrado */
+.intruso-card--acierto {
+  background: var(--color-success);
+  border-color: var(--color-success);
+  color: #06210f;
+  animation: intruso-revela 300ms ease both;
+}
+
+/* Era una canción del álbum */
+.intruso-card--fallo {
+  background: color-mix(in srgb, var(--color-error) 30%, var(--color-surface));
+  border-color: var(--color-error);
+  color: #ffc2cd;
+  animation: intruso-revela 300ms ease both;
+}
+
+/* Al perder: intruso que no se encontró */
+.intruso-card--perdido {
+  background: var(--color-surface);
+  border: 2px dashed var(--color-success);
+  color: var(--color-text);
+}
+
+/* Al terminar: canción del álbum sin tocar */
+.intruso-card--album {
+  opacity: 0.5;
+}
+
+@keyframes intruso-revela {
+  from {
+    transform: scale(0.96);
+  }
+  to {
+    transform: none;
+  }
+}
+
+@media (min-width: 600px) {
+  .intruso-board {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (min-width: 900px) {
+  .intruso-board {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}

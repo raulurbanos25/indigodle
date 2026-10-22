@@ -1,0 +1,155 @@
+.page.container > h1 {
+  margin-bottom: var(--space-3);
+  font-family: var(--font-base);
+  font-size: clamp(2.2rem, 5vw, 3.2rem);
+  font-weight: 900;
+  letter-spacing: -.055em;
+  text-transform: uppercase;
+}
+
+.jugar__intro {
+  max-width: 60ch;
+  color: var(--color-muted);
+  font-size: .9rem;
+  letter-spacing: .055em;
+  line-height: 1.7;
+  text-transform: uppercase;
+}
+
+.jugar > h1,
+.jugar__grid .game-card__title {
+  font-family: var(--font-base);
+  font-weight: 900;
+  letter-spacing: .055em;
+  text-transform: uppercase;
+}
+
+.jugar__grid .game-card__title {
+  font-size: 1.05rem;
+  line-height: 1.25;
+}
+
+.jugar__grid .game-card__text {
+  font-size: .76rem;
+  letter-spacing: .045em;
+  line-height: 1.65;
+  text-transform: uppercase;
+}
+
+.jugar__grid .game-card__badge,
+.jugar__grid .game-card__ver {
+  font-size: .68rem;
+  font-weight: 850;
+  letter-spacing: .12em;
+  text-transform: uppercase;
+}
+
+.jugar__grid .game-card__badge {
+  padding: 7px 12px;
+  border: 1px solid color-mix(in srgb, var(--color-accent) 34%, var(--color-border));
+  color: #d7cafa;
+  background: color-mix(in srgb, var(--color-accent) 12%, var(--color-surface));
+}
+
+.jugar__grid .game-card__badge--listo,
+.jugar__grid .game-card__badge--ganada {
+  border-color: color-mix(in srgb, #4ade80 52%, var(--color-border));
+  color: #86efac;
+  background: color-mix(in srgb, #22c55e 18%, var(--color-surface));
+}
+
+.jugar__grid .game-card__badge--perdida {
+  border-color: color-mix(in srgb, #fb7185 52%, var(--color-border));
+  color: #ff8a9c;
+  background: color-mix(in srgb, #ef4444 18%, var(--color-surface));
+}
+
+.jugar__grid .game-card__ver {
+  align-self: center;
+  color: var(--color-primary);
+}
+
+.jugar__grid {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr);
+  align-items: stretch;
+  gap: clamp(14px, 1.5vw, 22px);
+  margin-block: var(--space-6);
+}
+
+.jugar__grid .game-card {
+  min-height: 245px;
+  padding: clamp(18px, 1.7vw, 24px);
+  border-radius: 22px;
+}
+
+.jugar__ayuda {
+  color: var(--color-muted);
+  font-size: .78rem;
+  font-weight: 750;
+  letter-spacing: .09em;
+  text-transform: uppercase;
+}
+
+.jugar__progreso p {
+  font-size: .78rem;
+  font-weight: 750;
+  letter-spacing: .07em;
+  text-transform: uppercase;
+}
+
+@media (min-width: 600px) {
+  .jugar__grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+@media (min-width: 900px) {
+  .jugar__grid {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+}
+
+@media (min-width: 1200px) {
+  .jugar__grid {
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+  }
+}
+
+@media (max-width: 599px) {
+  .jugar__grid .game-card { min-height: 220px; }
+}
+.jugar__progreso {
+  max-width: 480px;
+  margin-block: var(--space-4);
+}
+
+.jugar__progreso p {
+  margin: 0 0 var(--space-2);
+  color: var(--color-muted);
+}
+
+.jugar__progreso strong {
+  color: var(--color-text);
+}
+
+.jugar__barra {
+  height: 8px;
+  overflow: hidden;
+  background: var(--color-surface-2);
+  border-radius: 999px;
+}
+
+.jugar__barra span {
+  display: block;
+  height: 100%;
+  background: var(--gradient-brand);
+  border-radius: 999px;
+  transition: width 600ms ease;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .jugar__barra span {
+    transition: none;
+  }
+}

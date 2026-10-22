@@ -1,0 +1,639 @@
+/* ===================================================
+   Base de las demos
+   =================================================== */
+.d-root {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-3);
+  font-size: var(--font-size-sm);
+}
+
+.d-bloque {
+  display: block;
+}
+
+.d-sub {
+  color: var(--color-muted);
+}
+
+.d-estado {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  gap: var(--space-1) var(--space-4);
+  color: var(--color-muted);
+  font-weight: 600;
+}
+
+/* ---------- Buscador simulado ---------- */
+.d-entrada {
+  display: flex;
+  align-items: center;
+  min-height: 40px;
+  padding: 0 var(--space-4);
+  background: var(--color-bg);
+  border: 2px solid var(--color-border);
+  border-radius: var(--radius-md);
+}
+
+.d-entrada__vacio {
+  color: var(--color-muted);
+  opacity: 0.7;
+}
+
+.d-entrada__texto {
+  color: var(--color-text);
+  font-weight: 600;
+}
+
+.d-caret {
+  width: 2px;
+  height: 1.2em;
+  margin-left: 2px;
+  background: var(--color-primary);
+  animation: d-parpadeo 900ms steps(1) infinite;
+}
+
+@keyframes d-parpadeo {
+  50% {
+    opacity: 0;
+  }
+}
+
+/* ---------- Cartel de victoria ---------- */
+.d-victoria {
+  align-self: center;
+  padding: var(--space-2) var(--space-6);
+  background: var(--color-success);
+  border-radius: 999px;
+  color: #06210f;
+  font-weight: 800;
+  opacity: 0;
+  visibility: hidden;
+  transform: scale(0.9);
+  transition:
+    opacity 300ms ease,
+    transform 350ms cubic-bezier(0.34, 1.56, 0.64, 1);
+}
+
+.d-victoria--on {
+  opacity: 1;
+  visibility: visible;
+  transform: none;
+}
+
+/* ---------- Chips e intentos ---------- */
+.d-chips {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-2);
+  min-height: 30px;
+}
+
+.d-chip {
+  padding: 2px var(--space-3);
+  border-radius: 999px;
+  font-weight: 700;
+  animation: d-pop 350ms ease both;
+}
+
+.d-chip--ko {
+  background: color-mix(in srgb, var(--color-error) 18%, var(--color-surface));
+  border: 1px solid var(--color-error);
+  color: #ffc2cd;
+}
+
+.d-intentos {
+  display: grid;
+  gap: var(--space-2);
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.d-intento {
+  min-height: 36px;
+  padding: var(--space-2) var(--space-4);
+  border-radius: var(--radius-md);
+  font-weight: 700;
+  animation: d-pop 350ms ease both;
+}
+
+.d-intento--ko {
+  background: color-mix(in srgb, var(--color-error) 18%, var(--color-surface));
+  border: 1px solid var(--color-error);
+  color: #ffc2cd;
+}
+
+.d-intento--ok {
+  background: var(--color-success);
+  border: 1px solid var(--color-success);
+  color: #06210f;
+}
+
+.d-intento--vacia,
+.d-intento--vacio {
+  border: 2px dashed var(--color-border);
+  opacity: 0.45;
+  animation: none;
+}
+
+/* ---------- Cabeceras de álbum y canción ---------- */
+.d-album,
+.d-cancion {
+  display: flex;
+  align-items: center;
+  gap: var(--space-3);
+  padding: var(--space-3);
+  background: var(--color-surface-2);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-md);
+}
+
+.d-tapa {
+  flex-shrink: 0;
+  width: 48px;
+  height: 48px;
+  background: linear-gradient(135deg, hsl(328 80% 55%), hsl(262 70% 35%));
+  border-radius: var(--radius-sm);
+}
+
+.d-icono {
+  display: grid;
+  flex-shrink: 0;
+  place-items: center;
+  width: 48px;
+  height: 48px;
+  background: var(--color-surface);
+  border-radius: var(--radius-sm);
+  font-size: 1.6rem;
+}
+
+/* ---------- Animaciones sueltas ---------- */
+@keyframes d-pop {
+  from {
+    opacity: 0;
+    transform: scale(0.85);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+@keyframes d-flip {
+  from {
+    opacity: 0;
+    transform: rotateX(90deg);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+/* ===================================================
+   Clásico
+   =================================================== */
+.d-scroll {
+  overflow-x: auto;
+}
+
+.d-tabla {
+  display: grid;
+  gap: var(--space-2);
+  min-width: 600px;
+}
+
+.d-cabecera,
+.d-fila {
+  display: grid;
+  grid-template-columns: 1.7fr repeat(6, 1fr);
+  gap: var(--space-2);
+}
+
+.d-cabecera span {
+  padding: var(--space-1);
+  border-bottom: 2px solid var(--color-border);
+  color: var(--color-muted);
+  font-size: 0.7rem;
+  letter-spacing: 0.06em;
+  text-align: center;
+  text-transform: uppercase;
+}
+
+.d-cabecera span:first-child {
+  text-align: left;
+}
+
+.d-fila {
+  min-height: 64px;
+}
+
+.d-fila--vacia {
+  display: block;
+  border: 2px dashed var(--color-border);
+  border-radius: var(--radius-md);
+  opacity: 0.45;
+}
+
+.d-fila__titulo {
+  display: flex;
+  align-items: center;
+  padding: var(--space-2) var(--space-3);
+  background: var(--color-surface-2);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-md);
+  font-weight: 700;
+}
+
+.d-celda {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: var(--space-3) var(--space-1) var(--space-1);
+  border-radius: var(--radius-md);
+  font-weight: 700;
+  text-align: center;
+  animation: d-flip 500ms ease both;
+  animation-delay: calc(var(--i) * 110ms);
+}
+
+.d-celda small {
+  position: absolute;
+  top: 4px;
+  right: 6px;
+  font-size: 0.7rem;
+}
+
+.d-celda--ok {
+  background: var(--color-success);
+  color: #06210f;
+}
+
+.d-celda--ko {
+  background: color-mix(in srgb, var(--color-error) 18%, var(--color-surface));
+  border: 1px solid var(--color-error);
+  color: #ffc2cd;
+}
+
+/* ===================================================
+   Tracklist y huecos numerados
+   =================================================== */
+.d-huecos,
+.d-pistas,
+.d-linea {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: var(--space-2);
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.d-pistas--columna {
+  grid-template-columns: 1fr;
+}
+
+.d-hueco,
+.d-pista,
+.d-slot {
+  display: flex;
+  align-items: center;
+  gap: var(--space-3);
+  min-height: 48px;
+  padding: var(--space-2) var(--space-3);
+  background: var(--color-surface-2);
+  border: 2px solid var(--color-border);
+  border-radius: var(--radius-md);
+  color: var(--color-muted);
+  font-weight: 700;
+}
+
+.d-hueco__n {
+  min-width: 1.2rem;
+  text-align: right;
+}
+
+.d-hueco--ok {
+  background: var(--color-success);
+  border-color: var(--color-success);
+  color: #06210f;
+  animation: d-pop 350ms ease both;
+}
+
+/* ===================================================
+   Intruso
+   =================================================== */
+.d-tarjetas {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: var(--space-2);
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.d-tarjeta {
+  display: flex;
+  align-items: center;
+  min-height: 62px;
+  padding: var(--space-2) var(--space-3);
+  background: var(--color-surface-2);
+  border: 2px solid var(--color-border);
+  border-radius: var(--radius-md);
+  font-weight: 700;
+  transition:
+    transform 250ms ease,
+    background 300ms ease,
+    border-color 300ms ease;
+}
+
+.d-tarjeta--pulsada {
+  border-color: var(--color-accent);
+  transform: scale(0.95);
+}
+
+.d-tarjeta--ok {
+  background: var(--color-success);
+  border-color: var(--color-success);
+  color: #06210f;
+}
+
+.d-tarjeta--ko {
+  background: color-mix(in srgb, var(--color-error) 30%, var(--color-surface));
+  border-color: var(--color-error);
+  color: #ffc2cd;
+}
+
+/* ===================================================
+   Invitados y Dúo (pistas)
+   =================================================== */
+.d-pista--visible {
+  background: var(--color-surface-2);
+  border-color: var(--color-accent);
+  color: var(--color-text);
+  animation: d-pop 350ms ease both;
+}
+
+/* ===================================================
+   Cronología
+   =================================================== */
+.d-slot {
+  transition:
+    background 300ms ease,
+    border-color 300ms ease;
+}
+
+.d-slot__texto {
+  display: flex;
+  flex: 1;
+  flex-direction: column;
+  min-width: 0;
+}
+
+.d-slot__texto small {
+  font-size: 0.65rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  opacity: 0.85;
+}
+
+.d-slot--actual {
+  border-color: var(--color-accent);
+  color: var(--color-text);
+}
+
+.d-slot--ok {
+  background: var(--color-success);
+  border-color: var(--color-success);
+  color: #06210f;
+  animation: d-pop 350ms ease both;
+}
+
+.d-cartas {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: var(--space-2);
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.d-carta {
+  padding: var(--space-2) var(--space-3);
+  background: var(--color-surface-2);
+  border: 2px solid var(--color-border);
+  border-radius: var(--radius-md);
+  font-weight: 700;
+  transition:
+    background 300ms ease,
+    border-color 300ms ease;
+}
+
+.d-carta--ko {
+  background: color-mix(in srgb, var(--color-error) 30%, var(--color-surface));
+  border-color: var(--color-error);
+  color: #ffc2cd;
+}
+
+.d-carta--oculta {
+  visibility: hidden;
+}
+
+/* ===================================================
+   Palabra
+   =================================================== */
+.d-malla {
+  display: grid;
+  gap: var(--space-2);
+  justify-content: center;
+}
+
+.d-malla__fila {
+  display: flex;
+  gap: var(--space-2);
+}
+
+.d-tile {
+  display: grid;
+  place-items: center;
+  width: 42px;
+  height: 42px;
+  border: 2px solid var(--color-border);
+  border-radius: var(--radius-sm);
+  font-size: var(--font-size-lg);
+  font-weight: 800;
+}
+
+.d-tile--escrita {
+  border-color: var(--color-accent);
+}
+
+.d-tile--correcta,
+.d-tile--presente,
+.d-tile--ausente {
+  animation: d-flip 450ms ease both;
+  animation-delay: calc(var(--i) * 110ms);
+}
+
+.d-tile--correcta {
+  background: var(--color-success);
+  border-color: var(--color-success);
+  color: #06210f;
+}
+
+.d-tile--presente {
+  background: var(--color-warning);
+  border-color: var(--color-warning);
+  color: #2b1d00;
+}
+
+.d-tile--ausente {
+  background: var(--color-surface-2);
+  border-color: var(--color-surface-2);
+  color: var(--color-muted);
+}
+
+/* ===================================================
+   Portada
+   =================================================== */
+.d-portada {
+  display: grid;
+  place-items: center;
+}
+
+.d-portada__marco {
+  width: min(170px, 60%);
+  aspect-ratio: 1;
+  overflow: hidden;
+  border: 2px solid var(--color-border);
+  border-radius: var(--radius-md);
+  transition: border-color 500ms ease;
+}
+
+.d-portada__marco--ok {
+  border-color: var(--color-success);
+}
+
+.d-portada__arte {
+  display: grid;
+  place-items: center;
+  width: 100%;
+  height: 100%;
+  color: rgba(255, 255, 255, 0.92);
+  font-size: 5rem;
+  font-weight: 900;
+  background:
+    radial-gradient(circle at 30% 30%, #ffd166 0 12%, transparent 13%),
+    radial-gradient(circle at 70% 65%, #06d6a0 0 18%, transparent 19%),
+    linear-gradient(135deg, #ff2e93, #7b5cff 60%, #1b1433);
+  transform: scale(var(--zoom, 1));
+  transform-origin: 30% 30%;
+  filter: blur(var(--blur, 0px));
+  transition:
+    filter 800ms ease,
+    transform 800ms ease;
+}
+
+/* ===================================================
+   Movimiento reducido
+   =================================================== */
+@media (prefers-reduced-motion: reduce) {
+  .d-caret,
+  .d-celda,
+  .d-chip,
+  .d-intento,
+  .d-hueco--ok,
+  .d-pista--visible,
+  .d-slot--ok,
+  .d-tile--correcta,
+  .d-tile--presente,
+  .d-tile--ausente {
+    animation: none;
+  }
+
+  .d-victoria,
+  .d-tarjeta,
+  .d-slot,
+  .d-carta,
+  .d-portada__marco,
+  .d-portada__arte {
+    transition: none;
+  }
+}
+/* ===================================================
+   Escucha
+   =================================================== */
+.d-clip {
+  display: flex;
+  align-items: center;
+  gap: var(--space-3);
+  padding: var(--space-3);
+  background: var(--color-surface-2);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-md);
+}
+
+.d-clip__play {
+  display: grid;
+  flex-shrink: 0;
+  place-items: center;
+  width: 40px;
+  height: 40px;
+  background: var(--gradient-brand);
+  border-radius: 50%;
+  color: #fff;
+}
+
+.d-clip__barra {
+  display: grid;
+  flex: 1;
+  grid-template-columns: repeat(6, 1fr);
+  gap: 4px;
+  height: 12px;
+}
+
+.d-seg {
+  background: var(--color-border);
+  border-radius: 3px;
+  transition: background 300ms ease;
+}
+
+.d-seg--on {
+  background: var(--color-accent);
+}
+
+.d-clip__seg {
+  min-width: 2.2rem;
+  color: var(--color-muted);
+  font-weight: 700;
+  text-align: right;
+}
+
+.d-reveal {
+  display: flex;
+  align-items: center;
+  gap: var(--space-3);
+  padding: var(--space-3);
+  background: var(--color-surface-2);
+  border: 1px solid var(--color-success);
+  border-radius: var(--radius-md);
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity 300ms ease;
+}
+
+.d-reveal--on {
+  opacity: 1;
+  visibility: visible;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .d-seg,
+  .d-reveal {
+    transition: none;
+  }
+}

@@ -1,0 +1,70 @@
+.wgrid {
+  display: grid;
+  gap: var(--space-2);
+  justify-content: center;
+  margin: var(--space-4) 0;
+  padding: 0;
+  list-style: none;
+}
+
+.wgrid__row {
+  display: flex;
+  gap: var(--space-2);
+}
+
+.tile {
+  display: grid;
+  place-items: center;
+  width: 52px;
+  height: 52px;
+  background: var(--color-surface);
+  border: 2px solid var(--color-border);
+  border-radius: var(--radius-sm);
+  font-size: var(--font-size-xl);
+  font-weight: 800;
+  text-transform: uppercase;
+}
+
+.tile--escrita {
+  border-color: var(--color-accent);
+}
+
+.tile--correcta,
+.tile--presente,
+.tile--ausente {
+  animation: tile-revela 400ms ease both;
+}
+
+.tile--correcta {
+  background: var(--color-success);
+  border-color: var(--color-success);
+  color: #06210f;
+}
+
+.tile--presente {
+  background: var(--color-warning);
+  border-color: var(--color-warning);
+  color: #2b1d00;
+}
+
+.tile--ausente {
+  background: var(--color-surface-2);
+  border-color: var(--color-surface-2);
+  color: var(--color-muted);
+}
+
+@keyframes tile-revela {
+  from {
+    transform: rotateX(90deg);
+  }
+  to {
+    transform: none;
+  }
+}
+
+@media (min-width: 600px) {
+  .tile {
+    width: 60px;
+    height: 60px;
+  }
+}

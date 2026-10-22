@@ -1,0 +1,68 @@
+.song-search {
+  position: relative;
+  margin-block: var(--space-4);
+}
+
+.song-search__label {
+  display: block;
+  margin-bottom: var(--space-2);
+  font-weight: 600;
+}
+
+.song-search__input {
+  width: 100%;
+  padding: var(--space-3) var(--space-4);
+  font: inherit;
+  color: var(--color-text);
+  background: var(--color-surface);
+  border: 2px solid var(--color-border);
+  border-radius: var(--radius-md);
+}
+
+.song-search__input:focus {
+  border-color: var(--color-accent);
+}
+
+
+.song-search__input:disabled {
+  opacity: 0.5;
+}
+
+.song-search__list {
+  position: absolute;
+  z-index: 20;
+  left: 0;
+  right: 0;
+  margin-top: var(--space-1);
+  background: var(--color-surface-2);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-md);
+  overflow: hidden;
+}
+
+.song-search__option {
+  display: flex;
+  justify-content: space-between;
+  gap: var(--space-3);
+  padding: var(--space-3) var(--space-4);
+  cursor: pointer;
+}
+
+.song-search__option--activa {
+  background: var(--color-accent);
+}
+
+.song-search__album {
+  color: var(--color-muted);
+  font-size: var(--font-size-sm);
+}
+
+.song-search__option--activa .song-search__album {
+  color: var(--color-text);
+}
+
+.song-search__empty {
+  margin: var(--space-2) 0 0;
+  color: var(--color-muted);
+  font-size: var(--font-size-sm);
+}

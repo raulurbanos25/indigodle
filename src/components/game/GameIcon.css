@@ -1,0 +1,104 @@
+.icono-albumes {
+  position: relative;
+  display: inline-block;
+  width: 96px;
+  height: 68px;
+  vertical-align: top;
+}
+
+.icono-albumes__item {
+  position: absolute;
+  top: 7px;
+  left: 4px;
+  z-index: calc(5 - var(--i));
+  display: block;
+  width: 52px;
+  height: 52px;
+  overflow: hidden;
+  border: 2px solid #e6dcef;
+  border-radius: 6px;
+  background: #171126;
+  box-shadow: 0 3px 10px rgba(0, 0, 0, .48), inset 0 0 0 2px rgba(255,255,255,.14);
+  opacity: 0;
+  transform: translate(0, 5px) scale(.7) rotate(-22deg);
+  transition: transform 500ms cubic-bezier(.2,.8,.2,1), opacity 300ms ease;
+}
+
+.icono-albumes__item img { display: block; width: 100%; height: 100%; object-fit: cover; }
+.icono-albumes__item::after {
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  background: linear-gradient(135deg, rgba(255,255,255,.25), transparent 58%);
+  content: '';
+}
+
+.icono-albumes__item:first-child { opacity: 1; transform: translate(0, 5px) scale(.9); }
+a.game-card:hover .icono-albumes__item,
+a.game-card:focus-visible .icono-albumes__item {
+  opacity: 1;
+  transform: translate(calc(var(--i) * 9px), calc(var(--i) * -3px)) scale(1) rotate(0);
+  transition-delay: calc(var(--i) * 85ms);
+}
+.game-card--bloqueada .icono-albumes__item { opacity: 1; transform: translate(calc(var(--i) * 9px), calc(var(--i) * -3px)) scale(1); transition: none; }
+@media (hover: none) {
+  .icono-albumes__item { opacity: 1; transform: translate(calc(var(--i) * 9px), calc(var(--i) * -3px)) scale(1); transition: none; }
+}
+
+.game-icon-svg {
+  display: block;
+  width: 54px;
+  height: 54px;
+  overflow: visible;
+  color: var(--color-primary);
+  animation: icono-respiro 3.8s ease-in-out infinite;
+}
+.game-icon__ring,
+.game-icon__line,
+.game-icon__spark,
+.game-icon__face,
+.game-icon__tile {
+  stroke: currentColor;
+  stroke-width: 2.6;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+.game-icon__ring { stroke: var(--color-accent); }
+.game-icon__line { stroke: #d8cce9; }
+.game-icon__spark { stroke: var(--color-primary); }
+.game-icon__face { fill: color-mix(in srgb, var(--color-accent) 22%, transparent); stroke: var(--color-accent); }
+.game-icon__dot { fill: var(--color-primary); }
+.game-icon__tile { fill: color-mix(in srgb, var(--color-primary) 15%, transparent); stroke: var(--color-primary); }
+.game-icon__tile--accent { fill: color-mix(in srgb, var(--color-accent) 22%, transparent); stroke: var(--color-accent); }
+
+.game-icon-svg--clasico .game-icon__ring { transform-box: fill-box; transform-origin: center; animation: icono-pulso 2.6s ease-in-out infinite; }
+.game-icon-svg--intruso .game-icon__line { transform-box: fill-box; transform-origin: 75% 75%; animation: icono-lupa 3s ease-in-out infinite; }
+.game-icon-svg--invitados .game-icon__face { transform-box: fill-box; transform-origin: center; animation: icono-mascara 3s ease-in-out infinite; }
+.game-icon-svg--duo .game-icon__line { animation: icono-apreton 2.8s ease-in-out infinite; }
+.game-icon-svg--cronologia .game-icon__line { transform-box: fill-box; transform-origin: 50% 52%; animation: icono-reloj 7s linear infinite; }
+.game-icon-svg--top10 .game-icon__spark { stroke-dasharray: 56; animation: icono-dibuja 3s ease-in-out infinite; }
+.game-icon__bar { fill: color-mix(in srgb, var(--color-primary) 52%, var(--color-accent)); transform-box: fill-box; transform-origin: bottom; }
+.game-icon-svg--ranking .game-icon__bar { animation: icono-barras 1.2s ease-in-out infinite alternate; }
+.game-icon-svg--ranking .game-icon__bar:nth-of-type(2) { animation-delay: .25s; }
+.game-icon-svg--ranking .game-icon__bar:nth-of-type(3) { animation-delay: .5s; }
+.game-icon-svg--palabra .game-icon__tile { transform-box: fill-box; transform-origin: center; animation: icono-teclas 1.9s ease-in-out infinite; }
+.game-icon-svg--palabra .game-icon__tile:nth-of-type(2) { animation-delay: .2s; }
+.game-icon-svg--palabra .game-icon__tile:nth-of-type(3) { animation-delay: .4s; }
+.game-icon-svg--palabra .game-icon__tile:nth-of-type(4) { animation-delay: .6s; }
+.game-icon-svg--portada .game-icon__line { stroke-dasharray: 72; animation: icono-dibuja 3.2s ease-in-out infinite; }
+.game-icon-svg--escucha .game-icon__ring { transform-box: fill-box; transform-origin: center; animation: icono-onda 2s ease-in-out infinite; }
+
+@keyframes icono-respiro { 0%, 100% { transform: translateY(0); } 50% { transform: translateY(-3px); } }
+@keyframes icono-pulso { 0%,100% { transform: scale(1); opacity: .75; } 50% { transform: scale(1.08); opacity: 1; } }
+@keyframes icono-lupa { 0%,100% { transform: rotate(0); } 50% { transform: rotate(-12deg); } }
+@keyframes icono-mascara { 0%,100% { transform: translateY(0); } 50% { transform: translateY(-2px) rotate(-3deg); } }
+@keyframes icono-apreton { 0%,100% { transform: translateX(0); } 50% { transform: translateX(2px); } }
+@keyframes icono-reloj { to { transform: rotate(360deg); } }
+@keyframes icono-dibuja { 0%,100% { stroke-dashoffset: 72; } 55% { stroke-dashoffset: 0; } }
+@keyframes icono-barras { from { transform: scaleY(.55); opacity: .72; } to { transform: scaleY(1); opacity: 1; } }
+@keyframes icono-teclas { 0%,100% { transform: translateY(0); } 40% { transform: translateY(-3px); } }
+@keyframes icono-onda { 0%,100% { transform: scale(1); } 50% { transform: scale(1.05); } }
+
+@media (prefers-reduced-motion: reduce) {
+  .game-icon-svg, .game-icon-svg *, .icono-albumes__item { animation: none !important; transition: none !important; }
+}

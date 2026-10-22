@@ -1,0 +1,124 @@
+.lineaanios {
+  min-width: 0;
+}
+
+.lineaanios__cabecera {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: baseline;
+  gap: var(--space-1) var(--space-4);
+  margin-bottom: var(--space-2);
+}
+
+.lineaanios__titulo {
+  color: var(--color-muted);
+  font-size: 0.75rem;
+  font-weight: 700;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+}
+
+.lineaanios__estado {
+  font-weight: 800;
+}
+
+/* La pista nunca salta de línea: si no caben los años, se desplaza hacia los lados */
+.lineaanios__pista {
+  display: flex;
+  margin: 0;
+  padding: 6px 4px 4px;
+  overflow-x: auto;
+  list-style: none;
+  scrollbar-width: thin;
+}
+
+.nodo {
+  position: relative;
+  flex: 1 0 68px;
+}
+
+/* Tramo de línea que une este año con el siguiente */
+.nodo:not(:last-child)::after {
+  content: '';
+  position: absolute;
+  top: 13.5px;
+  left: 50%;
+  width: 100%;
+  height: 3px;
+  background: var(--color-border);
+  border-radius: 2px;
+}
+
+.nodo--tramo:not(:last-child)::after {
+  background: var(--gradient-brand);
+}
+
+.nodo__boton {
+  position: relative;
+  z-index: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 2px;
+  width: 100%;
+  padding: 0;
+  font: inherit;
+  color: var(--color-muted);
+  background: none;
+  border: 0;
+  cursor: pointer;
+}
+
+.nodo__punto {
+  width: 20px;
+  height: 20px;
+  margin: 5px 0;
+  background: var(--color-surface-2);
+  border: 3px solid var(--color-border);
+  border-radius: 50%;
+  transition:
+    transform 250ms ease,
+    border-color 250ms ease,
+    box-shadow 250ms ease;
+}
+
+.nodo__boton:hover .nodo__punto {
+  border-color: var(--color-accent);
+  transform: scale(1.15);
+}
+
+.nodo__anio {
+  font-size: 0.9rem;
+  font-weight: 800;
+}
+
+.nodo__n {
+  font-size: 0.7rem;
+  opacity: 0.8;
+}
+
+.nodo--dentro .nodo__anio {
+  color: var(--color-text);
+}
+
+.nodo--dentro .nodo__punto {
+  background: var(--gradient-brand);
+  border-color: transparent;
+}
+
+.nodo--extremo .nodo__punto {
+  transform: scale(1.3);
+  box-shadow: 0 0 0 5px color-mix(in srgb, var(--color-accent) 30%, transparent);
+}
+
+.lineaanios__ayuda {
+  margin: var(--space-2) 0 0;
+  color: var(--color-muted);
+  font-size: 0.75rem;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .nodo__punto {
+    transition: none;
+  }
+}

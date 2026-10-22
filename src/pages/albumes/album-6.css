@@ -1,0 +1,98 @@
+.album6-page {
+  --gx-fondo: #111318;
+  --gx-panel: #22252c;
+  --gx-texto: #f6f7f9;
+  --gx-suave: #b9bdc7;
+  --gx-dorado: #e2e4e9;
+  --gx-verde: #aeb4c0;
+  --gx-borde: rgba(220, 225, 234, .24);
+  background: radial-gradient(ellipse at 15% 8%, #858b9b30, transparent 38%), radial-gradient(ellipse at 90% 44%, #656d7b22, transparent 36%), var(--gx-fondo);
+}
+
+.album6-video-fondo { position: absolute; z-index: 0; inset: 0; overflow: hidden; pointer-events: none; }
+.album6-video-fondo video { position: absolute; inset: 0; width: 100%; height: 100%; max-width: none; object-fit: cover; object-position: center; opacity: .76; }
+.album6-video-fondo::after { position: absolute; inset: 0; background: rgba(17, 19, 24, .3); content: ''; }
+.album6-page .grx-era-superior,
+.album6-page .grx-era-inferior { position: relative; z-index: 1; }
+
+.album6-fondo__luz { position: absolute; top: 150px; left: 8%; width: min(48vw, 620px); aspect-ratio: 1; border-radius: 50%; background: #aeb4c0; filter: blur(180px); opacity: .08; }
+.album6-page .grx-fondo__textura { opacity: .08; background-image: radial-gradient(#e5e8ee 1px, transparent 1.5px); }
+.album6-page .grx-era-superior { padding-bottom: 38px; }
+.album6-page .grx-migas a:hover { color: #fff; }
+.album6-hero { padding-bottom: 30px; }
+.album6-cd { left: 0; }
+.album6-info { align-self: start; margin-top: 12px; }
+.album6-page .grx-cd__aro--uno { border-color: #e2e4e930; }
+.album6-page .grx-cd__aro--dos { border-color: #c4c9d450; }
+.album6-page .grx-cd__disco { border-color: #e5e8ee60; background: repeating-radial-gradient(circle, #16181d 0, #565b65 2px, #22252b 4px, #727781 6px); }
+.album6-page .grx-cd__giro { animation: album6-gira 8s linear infinite; }
+.album6-page .grx-cd__giro img { display: block; }
+.album6-page .grx-cd__centro { border-color: #f0f1f4; background: #191b20; }
+.album6-page .grx-cd__portada { background: linear-gradient(145deg, #c4c7cc, #686d77 65%, #252830); }
+.album6-page .grx-cd__portada span { color: #fff; }
+.album6-page .grx-cd__portada:hover { box-shadow: 0 30px 80px #000a, 0 0 60px #c8ccd51f; }
+.album6-page .grx-info h1 { max-width: 100%; margin: 0 0 26px; line-height: 0; overflow: visible; }
+.album6-info__titulo-imagen { display: block; width: min(100%, clamp(310px, 54vw, 650px)); height: auto; filter: drop-shadow(0 1px 4px #0008); }
+.album6-page .grx-kicker { color: #d6d9df; }
+.album6-page .grx-datos { gap: 9px; overflow: visible; border: 0; border-radius: 0; background: transparent; }
+.album6-page .grx-datos div { padding: 14px 12px 15px; border: 1px solid #c5cad433; border-radius: 14px; background: linear-gradient(145deg, #282b32f2, #1b1e24f5); box-shadow: inset 0 1px #ffffff0d, 0 8px 20px #0003; }
+.album6-page .grx-datos dt { color: #bfc3cc; font-weight: 850; letter-spacing: .1em; text-transform: uppercase; }
+.album6-page .grx-datos dd { color: #f8f9fb; font-size: clamp(.92rem, 1.5vw, 1.2rem); font-weight: 900; }
+.album6-page .grx-acciones a, .album6-page .grx-acciones button { border-color: #d4d8df66; color: #f7f8fa; background: linear-gradient(145deg, #2c3038, #1e2127); }
+.album6-page .grx-acciones a:hover, .album6-page .grx-acciones button:hover { border-color: #f0f1f4; background: #444954; }
+.album6-page .grx-acciones button { background: linear-gradient(110deg, #737986, #3e424c); }
+.album6-page .grx-mensaje { color: #e2e4e9; }
+
+.album6-filtro-discos { grid-column: 1 / -1; display: flex; flex-wrap: wrap; justify-content: center; gap: 12px; margin: 0 0 2px; }
+.album6-filtro-discos button { display: flex; min-width: 150px; flex-direction: column; align-items: center; gap: 5px; padding: 12px 18px; border: 1px solid #c5cad455; border-radius: 14px; color: #e7e9ee; background: linear-gradient(145deg,#282b32,#1b1e24); cursor: pointer; transition: transform .2s ease,border-color .2s ease,background .2s ease,box-shadow .2s ease; }
+.album6-filtro-discos button:hover { transform: translateY(-2px); border-color: #e5e7ebaa; }
+.album6-filtro-discos button.is-active { border-color: #f0f1f4; color: #17191e; background: linear-gradient(135deg,#f1f2f4,#c4c9d4); box-shadow: 0 8px 24px #c4c9d425,inset 0 1px #fff; }
+.album6-filtro-discos button span { font-size: .82rem; font-weight: 900; letter-spacing: .1em; }
+.album6-filtro-discos button small { color: #c4c8d0; font-size: .72rem; font-weight: 700; }
+.album6-filtro-discos button.is-active small { color: #464a53; }
+.album6-discos { display: grid; gap: 26px; }
+.album6-disco { min-width: 0; }
+.album6-disco__cabecera { display: flex; align-items: baseline; justify-content: space-between; gap: 12px; margin: 0 0 11px; padding-bottom: 9px; border-bottom: 1px solid #c5cad433; }
+.album6-disco__cabecera h3 { margin: 0; color: #f4f5f7; font-size: .9rem; font-weight: 900; letter-spacing: .11em; }
+.album6-disco__cabecera span { color: #c4c8d0; font-size: .74rem; font-weight: 750; white-space: nowrap; }
+.album6-disco__vacio { margin: 0; padding: 13px 15px; border: 1px dashed #c5cad440; border-radius: 11px; color: #c6cad2; background: #20232988; font-size: .8rem; }
+
+.album6-page .grx-disco-layout { grid-template-columns: minmax(0, 1.55fr) minmax(290px, .9fr); gap: 34px; }
+.album6-page .grx-seccion__titulo h2 { color: #f4f5f7; font-family: inherit; font-size: clamp(1.8rem, 4vw, 3rem); font-weight: 900; letter-spacing: -.05em; }
+.album6-page .grx-seccion__titulo > span { border-color: #d5d9e044; color: #f2f3f5; background: linear-gradient(145deg, #30343d, #202329); }
+.album6-page .grx-pista { border-color: #c5cad426; background: linear-gradient(110deg, #282b32f5, #1b1e24f5); }
+.album6-page .grx-pista:hover, .album6-page .grx-pista--activa { border-color: #dce0e766; background: linear-gradient(110deg, #373b44, #252830); }
+.album6-page .grx-pista__numero, .album6-page .grx-pista__duracion, .album6-page .grx-pista__colaboradores { color: #c1c5ce; }
+.album6-page .grx-pista__titulo { color: #f7f8fa; }
+.album6-page .grx-pista__play { border-color: #bfc4ce70; color: #f8f9fb; background: #383c45; }
+.album6-page .grx-pista__play:hover:not(:disabled) { background: #636976; }
+.album6-page .grx-tag, .album6-page .grx-tag--remix { border-color: #c4c9d466; color: #e0e3e9; }
+.album6-page .grx-pista__barra { background: #ffffff22; }
+.album6-page .grx-pista__barra span { background: linear-gradient(90deg, #e7e9ee, #808795); }
+.album6-page .grx-nota, .album6-page .grx-vacio { color: #c6cad2; }
+.album6-page .grx-disco-layout > .grx-seccion--colaboraciones { border-left-color: #c5cad433; }
+.album6-page .grx-invitados li { border-color: #c5cad440; background: radial-gradient(circle at 50% 0%, #d9dce414, transparent 52%), linear-gradient(155deg, #292c33, #1b1e24); }
+.album6-page .grx-invitados li:hover { border-color: #e4e6ebaa; }
+.album6-page .grx-invitados h3, .album6-page .grx-invitados small { color: #f4f5f7; }
+.album6-page .grx-invitados p { border-color: #c5cad455; color: #eceef2; background: #d9dce414; }
+.album6-page .grx-invitado__foto { border-color: #e5e7eb; background: #343840; box-shadow: 0 0 0 5px #d9dce414, 0 10px 22px #0005; }
+.album6-page .grx-vecinos { border-color: #c5cad433; }
+.album6-page .grx-vecinos > a:hover { border-color: #e5e7eb88; }
+.album6-page .grx-vecinos > a span, .album6-page .grx-vecinos small { color: #d2d5dc; }
+.album6-page .grx-disco-layout .grx-pista { animation-duration: .36s; animation-delay: calc(var(--grx-indice, 0) * 18ms); }
+.album6-page .grx-disco-layout .grx-invitados li { animation-duration: .36s; animation-delay: calc(var(--album6-indice, 0) * 35ms); }
+
+@keyframes album6-gira { to { transform: rotate(360deg); } }
+
+@media (max-width: 850px) {
+  .album6-info { align-self: auto; margin-top: 0; }
+  .album6-page .grx-disco-layout { grid-template-columns: minmax(0, 1fr); gap: 0; }
+  .album6-filtro-discos { grid-column: 1; margin-bottom: 25px; }
+  .album6-page .grx-disco-layout > .grx-seccion { margin-bottom: 52px; }
+  .album6-page .grx-disco-layout > .grx-seccion--colaboraciones { padding-left: 0; border-left: 0; }
+  .album6-page .grx-hero { padding-bottom: 30px; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .album6-page .grx-cd__giro { animation: none; }
+}

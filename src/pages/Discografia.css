@@ -1,0 +1,157 @@
+/* Esta página es más ancha que las demás para que quepan cinco discos grandes en una fila */
+.container.disco {
+  max-width: 1840px;
+}
+
+/* ---------- Cabecera ---------- */
+.disco__cabecera {
+  margin-bottom: var(--space-6);
+  text-align: center;
+}
+
+.disco__cabecera > * {
+  animation: disco-entra 700ms cubic-bezier(0.2, 0.7, 0.2, 1) both;
+}
+
+.disco__cabecera > :nth-child(2) {
+  animation-delay: 100ms;
+}
+
+.disco__cabecera > :nth-child(3) {
+  animation-delay: 200ms;
+}
+
+.disco__cabecera > :nth-child(4) {
+  animation-delay: 300ms;
+}
+
+@keyframes disco-entra {
+  from {
+    opacity: 0;
+    transform: translateY(18px);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+.disco__kicker {
+  margin: 0 0 var(--space-2);
+  color: var(--color-primary);
+  font-size: var(--font-size-sm);
+  font-weight: 800;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+}
+
+.disco__cabecera h1 {
+  margin-bottom: var(--space-2);
+  font-family: inherit;
+  font-size: clamp(1.8rem, 4vw, 3rem);
+  font-weight: 900;
+  letter-spacing: -.055em;
+  text-transform: uppercase;
+}
+
+.disco .album__info { text-align: center; }
+.disco .album__titulo { display: block; width: 100%; font-family: inherit; font-size: clamp(1.25rem, 2vw, 1.65rem); font-weight: 900; letter-spacing: -.045em; text-align: center; }
+.disco .album__titulo::after { left: 50%; transform: translateX(-50%) scaleX(0); transform-origin: center; }
+.disco .album:hover .album__titulo::after, .disco .album:focus-visible .album__titulo::after { transform: translateX(-50%) scaleX(1); }
+.disco .album__datos { font-size: .78rem; }
+.disco .album__cover { left: 8%; }
+.disco .album__disc { top: 1%; left: 8%; width: 82%; height: 98%; }
+
+.disco__intro {
+  max-width: 55ch;
+  margin: 0 auto var(--space-3);
+  color: var(--color-muted);
+}
+
+.disco__resumen {
+  display: inline-block;
+  margin: 0;
+  padding: var(--space-1) var(--space-4);
+  background: var(--color-surface-2);
+  border: 1px solid var(--color-border);
+  border-radius: 999px;
+  color: var(--color-muted);
+  font-size: var(--font-size-sm);
+  font-weight: 600;
+}
+
+.disco__aviso {
+  padding: var(--space-3) var(--space-4);
+  border: 1px dashed var(--color-warning);
+  border-radius: var(--radius-md);
+  color: var(--color-warning);
+  font-size: var(--font-size-sm);
+}
+
+/* ---------- Fila de álbumes ----------
+   --cols dice cuántos caben por fila. En pantallas grandes son 5. Las filas incompletas quedan centradas. */
+.disco__fila {
+  --gap: clamp(42px, 5vw, 76px);
+  --cols: 1;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: var(--space-12) var(--gap);
+  margin: var(--space-12) 0 0;
+  padding: 0;
+  list-style: none;
+}
+
+.disco__item {
+  width: calc((100% - (var(--cols) - 1) * var(--gap)) / var(--cols));
+  max-width: 500px;
+}
+
+.disco__proximo {
+  display: flex;
+  aspect-ratio: 100 / 84;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  border: 1px dashed color-mix(in srgb, var(--color-primary) 55%, var(--color-border));
+  border-radius: var(--radius-lg);
+  color: var(--color-muted);
+  background: radial-gradient(ellipse at 50% 42%, color-mix(in srgb, var(--color-primary) 12%, transparent), transparent 65%), color-mix(in srgb, var(--color-surface) 55%, transparent);
+  text-align: center;
+}
+
+.disco__proximo strong { color: var(--color-text); font-size: .85rem; letter-spacing: .12em; }
+.disco__proximo small { font-size: .75rem; }
+.disco__proximo-disco { display: grid; width: clamp(76px, 9vw, 112px); aspect-ratio: 1; place-items: center; border: 1px solid color-mix(in srgb, var(--color-primary) 55%, var(--color-border)); border-radius: 50%; background: repeating-radial-gradient(circle, color-mix(in srgb, var(--color-surface-2) 85%, transparent) 0 5px, color-mix(in srgb, var(--color-primary) 14%, var(--color-surface)) 6px 8px); box-shadow: 0 12px 34px rgba(0,0,0,.25); }
+.disco__proximo-disco span { width: 17%; aspect-ratio: 1; border: 1px solid var(--color-border); border-radius: 50%; background: var(--color-bg); }
+
+@media (min-width: 560px) {
+  .disco__fila {
+    --cols: 2;
+  }
+}
+
+@media (min-width: 820px) {
+  .disco__fila {
+    --cols: 3;
+  }
+}
+
+@media (min-width: 1100px) {
+  .disco__fila {
+    --cols: 3;
+  }
+}
+
+.disco__vacio {
+  margin-top: var(--space-8);
+  color: var(--color-muted);
+  text-align: center;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .disco__cabecera > * {
+    animation: none;
+  }
+}

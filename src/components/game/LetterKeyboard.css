@@ -1,0 +1,52 @@
+.kb {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-2);
+  max-width: 520px;
+  margin: var(--space-4) auto 0;
+}
+
+.kb__row {
+  display: flex;
+  justify-content: center;
+  gap: var(--space-1);
+}
+
+.kb__key {
+  flex: 1;
+  min-width: 0;
+  height: 48px;
+  padding: 0;
+  font: inherit;
+  font-weight: 700;
+  color: var(--color-text);
+  background: var(--color-surface-2);
+  border: 0;
+  border-radius: var(--radius-sm);
+  cursor: pointer;
+}
+
+.kb__key:disabled {
+  opacity: 0.5;
+  cursor: default;
+}
+
+.kb__key--wide {
+  flex: 1.6;
+  font-size: var(--font-size-sm);
+}
+
+.kb__key--correcta {
+  background: var(--color-success);
+  color: #06210f;
+}
+
+.kb__key--presente {
+  background: var(--color-warning);
+  color: #2b1d00;
+}
+
+.kb__key--ausente {
+  background: var(--color-bg);
+  color: var(--color-muted);
+}

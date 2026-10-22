@@ -1,0 +1,45 @@
+.caratula {
+  position: relative;
+  display: grid;
+  flex-shrink: 0;
+  place-items: center;
+  width: 140px;
+  height: 140px;
+  overflow: hidden;
+  background: var(--color-surface-2);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-md);
+  box-shadow: 0 10px 28px rgba(0, 0, 0, 0.45);
+  font-size: 3rem;
+  animation: caratula-aparece 600ms cubic-bezier(0.2, 0.7, 0.2, 1) both;
+}
+
+/* Si solo hay imagen del disco, se muestra redonda */
+.caratula--disco {
+  border-radius: 50%;
+}
+
+.caratula__img {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+@keyframes caratula-aparece {
+  from {
+    opacity: 0;
+    transform: scale(0.8) rotate(-6deg);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .caratula {
+    animation: none;
+  }
+}
