@@ -168,7 +168,7 @@ function Album3({ album }) {
           <ul className="dragon-invitados">
             {colaboraciones.map((colaboracion, indice) => <li className="dragon-invitado" key={colaboracion.artistas.join('|')} style={{ '--dragon-indice': indice }}>
               <div className={`dragon-invitado__artistas ${colaboracion.artistas.length > 1 ? 'dragon-invitado__artistas--varios' : ''}`}>
-                {colaboracion.artistas.map((artista) => fotoColaboracion(artista) ? <img key={artista} className="dragon-invitado__foto" src={fotoColaboracion(artista)} alt={`Foto de ${artista}`} loading="lazy" /> : <span key={artista} className="dragon-invitado__foto dragon-invitado__foto--iniciales" aria-label={artista}>{artista.slice(0, 1)}</span>)}
+                {colaboracion.artistas.map((artista) => fotoColaboracion(artista) ? <img key={artista} className="dragon-invitado__foto" src={fotoColaboracion(artista)} alt={`Foto de ${artista}`} loading="eager" decoding="async" /> : <span key={artista} className="dragon-invitado__foto dragon-invitado__foto--iniciales" aria-label={artista}>{artista.slice(0, 1)}</span>)}
               </div>
               <h3>{colaboracion.artistas.join(' + ')}</h3>
               <p>{colaboracion.canciones.length} {colaboracion.canciones.length === 1 ? 'canción' : 'canciones'}</p>

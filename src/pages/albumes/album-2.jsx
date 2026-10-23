@@ -358,7 +358,7 @@ function Album2({ album }) {
                           className="nina-invitado__foto"
                           src={fotoColaboracion(artista)}
                           alt={`Foto de ${artista}`}
-                          loading="lazy"
+                          loading="eager" decoding="async"
                         />
                       ) : (
                         <span key={artista} className="nina-invitado__foto nina-invitado__foto--iniciales" aria-label={artista}>

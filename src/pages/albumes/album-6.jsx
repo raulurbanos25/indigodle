@@ -186,7 +186,7 @@ function Album6({ album }) {
               {colaboraciones.length ? <ul key={`colaboraciones-${discoActivo.numero}`} className="grx-invitados">
                 {colaboraciones.map((colaboracion, indice) => <li key={colaboracion.artistas.join('|')} style={{ '--album6-indice': indice }}>
                   <div className={`grx-invitado__artistas ${colaboracion.artistas.length > 1 ? 'grx-invitado__artistas--varios' : ''}`}>
-                    {colaboracion.artistas.map((artista) => <img key={artista} className="grx-invitado__foto" src={imagenArtista(artista)} alt={`Foto de ${artista}`} loading="lazy" onError={(evento) => { evento.currentTarget.hidden = true }} />)}
+                    {colaboracion.artistas.map((artista) => <img key={artista} className="grx-invitado__foto" src={imagenArtista(artista)} alt={`Foto de ${artista}`} loading="eager" decoding="async" onError={(evento) => { evento.currentTarget.hidden = true }} />)}
                   </div>
                   <h3>{colaboracion.artistas.join(' + ')}</h3>
                   <p>{colaboracion.canciones.length} {colaboracion.canciones.length === 1 ? 'canción' : 'canciones'}</p>

@@ -271,3 +271,8 @@
   }
   .grx-disco-layout .grx-pista__duracion { justify-self: end; }
 }
+
+/* La lista y sus colaboraciones aparecen listas al abrir el álbum. */
+.grx-disco-layout > .grx-seccion,
+.grx-disco-layout .grx-pista,
+.grx-disco-layout .grx-invitados li { animation: none; }

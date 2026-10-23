@@ -96,3 +96,8 @@
 @media (prefers-reduced-motion: reduce) {
   .album6-page .grx-cd__giro { animation: none; }
 }
+
+/* Mostrar al instante el tracklist y las colaboraciones del disco elegido. */
+.album6-page .grx-disco-layout > .grx-seccion,
+.album6-page .grx-disco-layout .grx-pista,
+.album6-page .grx-disco-layout .grx-invitados li { animation: none; }

@@ -180,7 +180,7 @@ function Album5({ album }) {
             {colaboraciones.map((colaboracion) => <li key={colaboracion.artistas.join('|')}>
               <div className={`grx-invitado__artistas ${colaboracion.artistas.length > 1 ? 'grx-invitado__artistas--varios' : ''}`}>
                 {colaboracion.artistas.map((artista) => fotoColaboracion(artista)
-                  ? <img key={artista} className="grx-invitado__foto" src={fotoColaboracion(artista)} alt={`Foto de ${artista}`} loading="lazy" />
+                  ? <img key={artista} className="grx-invitado__foto" src={fotoColaboracion(artista)} alt={`Foto de ${artista}`} loading="eager" decoding="async" />
                   : <span key={artista} className="grx-invitado__foto grx-invitado__foto--iniciales" aria-label={artista}>{artista.slice(0, 1)}</span>)}
               </div>
               <h3>{colaboracion.artistas.join(' + ')}</h3>

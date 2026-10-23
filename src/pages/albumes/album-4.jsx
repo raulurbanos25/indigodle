@@ -177,7 +177,7 @@ function Album4({ album }) {
             {colaboraciones.map((colaboracion) => <li key={colaboracion.artistas.join('|')}>
               <div className={`nave-invitado__artistas ${colaboracion.artistas.length > 1 ? 'nave-invitado__artistas--varios' : ''}`}>
                 {colaboracion.artistas.map((artista) => fotoColaboracion(artista)
-                  ? <img key={artista} className="nave-invitado__foto" src={fotoColaboracion(artista)} alt={`Foto de ${artista}`} loading="lazy" />
+                  ? <img key={artista} className="nave-invitado__foto" src={fotoColaboracion(artista)} alt={`Foto de ${artista}`} loading="eager" decoding="async" />
                   : <span key={artista} className="nave-invitado__foto nave-invitado__foto--iniciales" aria-label={artista}>{artista.slice(0, 1)}</span>)}
               </div>
               <h3>{colaboracion.artistas.join(' + ')}</h3>

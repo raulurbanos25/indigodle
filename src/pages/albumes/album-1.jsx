@@ -312,7 +312,7 @@ function Album1({ album }) {
               {colaboraciones.map((colaboracion) => (
                 <li key={colaboracion.artistas.join('|')} className="akelarre-invitado">
                   <div className={`akelarre-invitado__artistas ${colaboracion.artistas.length > 1 ? 'akelarre-invitado__artistas--varios' : ''}`}>
-                    {colaboracion.artistas.map((artista) => fotoColaboracion(artista) ? <img key={artista} className="akelarre-invitado__foto" src={fotoColaboracion(artista)} alt={`Foto de ${artista}`} loading="lazy" /> : <span key={artista} className="akelarre-invitado__foto akelarre-invitado__foto--iniciales" aria-label={artista}>{artista.slice(0, 1)}</span>)}
+                    {colaboracion.artistas.map((artista) => fotoColaboracion(artista) ? <img key={artista} className="akelarre-invitado__foto" src={fotoColaboracion(artista)} alt={`Foto de ${artista}`} loading="eager" decoding="async" /> : <span key={artista} className="akelarre-invitado__foto akelarre-invitado__foto--iniciales" aria-label={artista}>{artista.slice(0, 1)}</span>)}
                   </div>
                   <h3>{colaboracion.artistas.join(' + ')}</h3>
                   <p className="akelarre-invitado__cantidad">
