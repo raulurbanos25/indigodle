@@ -119,48 +119,6 @@
   transform: translateY(-50%);
 }
 
-.nav-comunidad {
-  display: flex;
-  align-items: center;
-  gap: 10px;
-  margin-left: 4px;
-  padding-left: 14px;
-  border-left: 1px solid var(--color-border);
-  color: var(--color-muted);
-  font-size: .92rem;
-  font-weight: 800;
-  font-variant-numeric: tabular-nums;
-  list-style: none;
-}
-
-.nav-comunidad__visitas,
-.nav-comunidad__like {
-  display: inline-flex;
-  min-height: 44px;
-  align-items: center;
-  justify-content: center;
-  gap: 8px;
-  padding: 0 16px;
-  border: 1px solid color-mix(in srgb, var(--color-primary) 24%, var(--color-border));
-  border-radius: 999px;
-  background: color-mix(in srgb, var(--color-surface) 82%, transparent);
-  white-space: nowrap;
-}
-
-.nav-comunidad__like {
-  min-width: 84px;
-  color: var(--color-text);
-  font: inherit;
-  cursor: pointer;
-}
-
-.nav-comunidad__like > span:first-child { color: #ff78b5; font-size: 1.15rem; }
-.nav-comunidad__like:disabled { cursor: default; opacity: .76; }
-.nav-comunidad__like:not(:disabled):hover { border-color: var(--color-primary); color: #fff; }
-.nav-comunidad__eye { position: relative; width: 17px; height: 12px; border: 1.7px solid var(--color-accent); border-radius: 80% 20% 80% 20%; transform: rotate(-45deg); }
-.nav-comunidad__eye::after { position: absolute; top: 3px; left: 6px; width: 4px; height: 4px; border-radius: 50%; background: var(--color-accent); content: ''; }
-.nav-comunidad__sr { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0,0,0,0); white-space: nowrap; }
-
 .nav-ajustes__boton {
   display: grid;
   width: 44px;
@@ -367,18 +325,13 @@
     padding: var(--space-2) var(--space-4);
   }
 
-  .nav-comunidad { margin-left: 2px; padding-left: 10px; }
-
 }
 
 @media (max-width: 767px) {
-  .nav-comunidad { justify-content: flex-start; margin: 8px 0 0; padding: 12px 8px 2px; border-top: 1px solid var(--color-border); border-left: 0; }
   .nav-ajustes__panel { width: min(360px, calc(100vw - 24px)); padding: 18px; }
 }
 
 @media (min-width: 768px) and (max-width: 1120px) {
   .nav__lista { gap: 2px; }
   .nav__link { padding-inline: 9px; }
-  .nav-comunidad { gap: 7px; padding-left: 9px; font-size: .84rem; }
-  .nav-comunidad__visitas, .nav-comunidad__like { padding-inline: 12px; }
 }

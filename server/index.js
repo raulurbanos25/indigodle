@@ -3,7 +3,6 @@ import { stat } from 'node:fs/promises'
 import { createServer } from 'node:http'
 import { extname, resolve, sep } from 'node:path'
 import { fileURLToPath } from 'node:url'
-import { handleCommunityApi } from './communityApi.js'
 
 const DIST = fileURLToPath(new URL('../dist/', import.meta.url))
 const PORT = Number(process.env.PORT) || 4173
@@ -63,8 +62,6 @@ async function serveStatic(request, response) {
   }
 }
 
-createServer((request, response) => {
-  handleCommunityApi(request, response, () => serveStatic(request, response))
-}).listen(PORT, '0.0.0.0', () => {
+createServer(serveStatic).listen(PORT, '0.0.0.0', () => {
   console.log(`Indigodle server listening on port ${PORT}`)
 })

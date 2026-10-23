@@ -17,7 +17,6 @@ h1, h2, h3, p, small, strong, label, [class*="__titulo"], [class*="__texto"] { o
   .nav.nav--abierto { display: block; }
   .nav__lista { display: grid; gap: 3px; margin: 0; padding: 0; }
   .nav__link { width: 100%; min-height: 44px; padding: 11px 12px; }
-  .nav-comunidad { flex-wrap: wrap; justify-content: flex-start; margin: 8px 0 0; padding: 12px 8px 2px; border-top: 1px solid var(--color-border); border-left: 0; }
   .disco__fila { --cols: 2; --gap: clamp(20px, 4vw, 36px); }
   .akelarre-hero, .nina-hero, .dragon-hero, .nave-hero, .grx-hero { grid-template-columns: minmax(0, 1fr); gap: clamp(28px, 6vw, 48px); }
   .akelarre-disco-layout, .nina-disco-layout, .dragon-disco-layout, .nave-disco-layout, .grx-disco-layout, .album6-page .grx-disco-layout { grid-template-columns: minmax(0, 1fr); gap: 24px; }
@@ -58,7 +57,6 @@ h1, h2, h3, p, small, strong, label, [class*="__titulo"], [class*="__texto"] { o
   .page { padding-block: 24px 34px; }
   .header__logo { gap: 7px; font-size: .98rem; }
   .nav { padding-inline: 14px; }
-  .nav-comunidad__visitas, .nav-comunidad__like { min-height: 38px; padding-inline: 11px; }
   h1 { font-size: clamp(1.7rem, 8vw, 2.25rem); }
   h2 { font-size: clamp(1.3rem, 6vw, 1.75rem); }
   .hero__titulo { font-size: clamp(2.3rem, 13vw, 3.7rem); }

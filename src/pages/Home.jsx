@@ -8,7 +8,6 @@ import { useParallax } from '../hooks/useScrollEffects.js'
 import GameCard from '../components/game/GameCard.jsx'
 import Reveal from '../components/home/Reveal.jsx'
 import Countdown from '../components/home/Countdown.jsx'
-import CommunityPanel from '../components/home/CommunityPanel.jsx'
 import ScrollProgress from '../components/home/ScrollProgress.jsx'
 import './Home.css'
 
@@ -264,7 +263,6 @@ function Home() {
         </Reveal>
       </section>
       </div>
-      <CommunityPanel />
     </>
   )
 }

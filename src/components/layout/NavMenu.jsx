@@ -1,6 +1,5 @@
 import { useEffect, useRef, useState } from 'react'
 import { NavLink } from 'react-router-dom'
-import { useCommunity } from '../../contexts/CommunityContext.jsx'
 
 const CLAVE_AJUSTES = 'indigodle-ajustes'
 
@@ -130,34 +129,6 @@ const ENLACES = [
   { to: '/como-se-juega', texto: 'Cómo se juega' },
 ]
 
-const formato = new Intl.NumberFormat('es-ES')
-
-function ComunidadNav() {
-  const { visits, likes, liked, ready, error, liking, darMeGusta } = useCommunity()
-
-  return (
-    <li className="nav-comunidad" aria-label="Contador de la comunidad">
-      <span className="nav-comunidad__visitas" title="Visitas">
-        <span className="nav-comunidad__eye" aria-hidden="true" />
-        <span className="nav-comunidad__sr">Visitas</span>
-        {ready ? formato.format(visits) : '—'}
-      </span>
-      <button
-        type="button"
-        className="nav-comunidad__like"
-        onClick={darMeGusta}
-        disabled={!ready || error || liked || liking}
-        aria-pressed={liked}
-        aria-label={liked ? `Ya diste me gusta. ${ready ? formato.format(likes) : ''} me gusta` : `Dar me gusta. ${ready ? formato.format(likes) : ''} me gusta`}
-        title={liked ? 'Gracias por tu me gusta' : 'Me gusta'}
-      >
-        <span aria-hidden="true">{liked ? '♥' : '♡'}</span>
-        <span>{ready ? formato.format(likes) : '—'}</span>
-      </button>
-    </li>
-  )
-}
-
 function NavMenu({ id, abierto, alNavegar }) {
   return (
     <nav
@@ -180,7 +151,6 @@ function NavMenu({ id, abierto, alNavegar }) {
             </NavLink>
           </li>
         ))}
-        <ComunidadNav />
       </ul>
     </nav>
   )
