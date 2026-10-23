@@ -42,7 +42,7 @@ export function useGame() {
     borrar(claveGuardado(fecha))
     setIds([])
   }
-useRegistrarResultado(MODO, estado, fecha)
+useRegistrarResultado(MODO, estado, fecha, intentosIds.length)
   return {
     objetivo,
     intentos,

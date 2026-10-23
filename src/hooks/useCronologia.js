@@ -86,7 +86,7 @@ export function useCronologia() {
     borrar(claveGuardado(fecha))
     setElegidas([])
   }
-useRegistrarResultado(MODO, estado, fecha)
+useRegistrarResultado(MODO, estado, fecha, fallos)
   return {
     orden,
     cartas,

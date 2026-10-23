@@ -15,8 +15,10 @@ function etiquetaBarra(tipo, valor) {
 function DetalleModo({ partidas, hoy }) {
   const modos = GAMES.filter((juego) => juego.listo)
   const [elegido, setElegido] = useState(() => {
-    const jugado = modos.find((juego) => partidas.some((p) => p.modo === juego.id))
-    return (jugado ?? modos[0])?.id
+    const ultimaPartida = [...partidas].reverse().find((partida) =>
+      modos.some((juego) => juego.id === partida.modo)
+    )
+    return ultimaPartida?.modo ?? modos[0]?.id
   })
 
   const modo = modos.find((juego) => juego.id === elegido) ?? modos[0]

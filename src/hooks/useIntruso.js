@@ -67,7 +67,7 @@ export function useIntruso() {
     borrar(claveGuardado(fecha))
     setElegidas([])
   }
-useRegistrarResultado(MODO, estado, fecha)
+useRegistrarResultado(MODO, estado, fecha, fallos)
   return {
     album,
     cartas,

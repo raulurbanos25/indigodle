@@ -110,7 +110,7 @@ export function useJuegoEscucha() {
     setGuardado({ objetivoId: null, intentos: [] })
   }
 
-  useRegistrarResultado(MODO, estado, fecha)
+  useRegistrarResultado(MODO, estado, fecha, intentos.length)
 
   return {
     cancion,

@@ -63,7 +63,7 @@ export function useInvitados() {
     borrar(claveGuardado(fecha))
     setIds([])
   }
-useRegistrarResultado(MODO, estado, fecha)
+useRegistrarResultado(MODO, estado, fecha, intentos.length)
   return {
     album,
     invitados,

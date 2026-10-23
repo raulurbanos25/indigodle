@@ -6,6 +6,7 @@ import { leerJSON, guardarJSON, borrar } from './storage.js'
 //  1. "jugados:<fecha>": qué modos están terminados hoy. Lo usan las tarjetas para bloquearse.
 //  2. "historial": todas las partidas de todos los días, con sus intentos. Lo usan las estadísticas.
 const CLAVE_HISTORIAL = 'indigodle:historial'
+export const EVENTO_HISTORIAL_ACTUALIZADO = 'indigodle:historial-actualizado'
 const claveDia = (fecha) => `indigodle:jugados:${fecha}`
 
 const MODOS_VALIDOS = new Set(GAMES.map((juego) => juego.id))
@@ -108,6 +109,9 @@ export function registrarResultado(modo, estado, fecha = fechaDeHoy(), intentos 
 
   if (JSON.stringify(nuevo) !== JSON.stringify(historial)) {
     guardarJSON(CLAVE_HISTORIAL, nuevo)
+    if (typeof window !== 'undefined') {
+      window.dispatchEvent(new Event(EVENTO_HISTORIAL_ACTUALIZADO))
+    }
   }
 }
 

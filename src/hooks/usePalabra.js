@@ -92,7 +92,7 @@ export function usePalabra() {
     window.addEventListener('keydown', alPulsar)
     return () => window.removeEventListener('keydown', alPulsar)
   }, [escribir, borrar, enviar])
-useRegistrarResultado(MODO, estado, fecha)
+useRegistrarResultado(MODO, estado, fecha, intentos.length)
   return {
     palabra,
     objetivo,

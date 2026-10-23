@@ -90,7 +90,7 @@ export function useJuegoPortada() {
     borrar(claveGuardado(fecha))
     setGuardado({ objetivoId: null, ids: [] })
   }
-useRegistrarResultado(MODO, estado, fecha)
+useRegistrarResultado(MODO, estado, fecha, intentos.length)
   return {
     cargando,
     objetivo,

@@ -1,5 +1,5 @@
 import { useCallback, useEffect, useState } from 'react'
-import { leerHistorial } from '../services/partidas.js'
+import { EVENTO_HISTORIAL_ACTUALIZADO, leerHistorial } from '../services/partidas.js'
 
 // Lee el historial y lo mantiene al día (al volver a la pestaña o si cambia en otra pestaña)
 export function useEstadisticas() {
@@ -18,10 +18,12 @@ export function useEstadisticas() {
     }
 
     window.addEventListener('storage', recargar)
+    window.addEventListener(EVENTO_HISTORIAL_ACTUALIZADO, recargar)
     window.addEventListener('focus', recargar)
     document.addEventListener('visibilitychange', alVolver)
     return () => {
       window.removeEventListener('storage', recargar)
+      window.removeEventListener(EVENTO_HISTORIAL_ACTUALIZADO, recargar)
       window.removeEventListener('focus', recargar)
       document.removeEventListener('visibilitychange', alVolver)
     }

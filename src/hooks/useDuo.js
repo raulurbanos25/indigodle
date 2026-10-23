@@ -61,7 +61,7 @@ export function useDuo() {
     borrar(claveGuardado(fecha))
     setIntentos([])
   }
-useRegistrarResultado(MODO, estado, fecha)
+useRegistrarResultado(MODO, estado, fecha, intentos.length)
   return {
     cancion,
     pistas,

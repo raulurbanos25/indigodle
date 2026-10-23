@@ -67,7 +67,7 @@ export function useTracklist() {
     borrar(claveGuardado(fecha))
     setDatos(ESTADO_INICIAL)
   }
-useRegistrarResultado(MODO, estado, fecha)
+useRegistrarResultado(MODO, estado, fecha, fallos.length)
   return {
     album,
     pistas,
