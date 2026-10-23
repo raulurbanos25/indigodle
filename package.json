@@ -4,16 +4,17 @@
   "version": "0.0.0",
   "type": "module",
   "scripts": {
-  "audios": "node scripts/generar-audios.js",
-  "predev": "npm run audios",
-  "dev": "vite",
-  "start": "node server/index.js",
-  "prebuild": "npm run audios",
-  "build": "vite build",
-  "lint": "eslint .",
-  "preview": "vite preview"
-},
+    "audios": "node scripts/generar-audios.js",
+    "predev": "npm run audios",
+    "dev": "vite",
+    "start": "node server/index.js",
+    "prebuild": "npm run audios",
+    "build": "vite build",
+    "lint": "eslint .",
+    "preview": "vite preview"
+  },
   "dependencies": {
+    "@vercel/analytics": "^2.0.1",
     "react": "^19.2.8",
     "react-dom": "^19.2.8",
     "react-router-dom": "^7.18.4"

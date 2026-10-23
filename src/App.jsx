@@ -1,4 +1,5 @@
 import { Routes, Route } from 'react-router-dom'
+import { Analytics } from '@vercel/analytics/react'
 import Layout from './components/layout/Layout.jsx'
 import Home from './pages/Home.jsx'
 import Jugar from './pages/Jugar.jsx'
@@ -22,29 +23,32 @@ import NotFound from './pages/NotFound.jsx'
 
 function App() {
   return (
-    <Routes>
-      <Route element={<Layout />}>
-        <Route path="/" element={<Home />} />
-        <Route path="/jugar" element={<Jugar />} />
-        <Route path="/jugar/clasico" element={<JuegoClasico />} />
-        <Route path="/jugar/tracklist" element={<JuegoTracklist />} />
-        <Route path="/jugar/intruso" element={<JuegoIntruso />} />
-        <Route path="/jugar/invitados" element={<JuegoInvitados />} />
-        <Route path="/jugar/duo" element={<JuegoDuo />} />
-        <Route path="/jugar/cronologia" element={<JuegoCronologia />} />
-        <Route path="/jugar/ranking" element={<JuegoRanking />} />
-        <Route path="/jugar/top10" element={<JuegoTop10 />} />
-        <Route path="/jugar/palabra" element={<JuegoPalabra />} />
-        <Route path="/jugar/portada" element={<JuegoPortada />} />
-        <Route path="/jugar/escucha" element={<JuegoEscucha />} />
-        <Route path="/jugar/:modoId" element={<JuegoEnConstruccion />} />
-        <Route path="/estadisticas" element={<Estadisticas />} />
-        <Route path="/como-se-juega" element={<ComoSeJuega />} />
-        <Route path="/discografia" element={<Discografia />} />
-        <Route path="/discografia/:albumId" element={<AlbumDetalle />} />
-        <Route path="*" element={<NotFound />} />
-      </Route>
-    </Routes>
+    <>
+      <Routes>
+        <Route element={<Layout />}>
+          <Route path="/" element={<Home />} />
+          <Route path="/jugar" element={<Jugar />} />
+          <Route path="/jugar/clasico" element={<JuegoClasico />} />
+          <Route path="/jugar/tracklist" element={<JuegoTracklist />} />
+          <Route path="/jugar/intruso" element={<JuegoIntruso />} />
+          <Route path="/jugar/invitados" element={<JuegoInvitados />} />
+          <Route path="/jugar/duo" element={<JuegoDuo />} />
+          <Route path="/jugar/cronologia" element={<JuegoCronologia />} />
+          <Route path="/jugar/ranking" element={<JuegoRanking />} />
+          <Route path="/jugar/top10" element={<JuegoTop10 />} />
+          <Route path="/jugar/palabra" element={<JuegoPalabra />} />
+          <Route path="/jugar/portada" element={<JuegoPortada />} />
+          <Route path="/jugar/escucha" element={<JuegoEscucha />} />
+          <Route path="/jugar/:modoId" element={<JuegoEnConstruccion />} />
+          <Route path="/estadisticas" element={<Estadisticas />} />
+          <Route path="/como-se-juega" element={<ComoSeJuega />} />
+          <Route path="/discografia" element={<Discografia />} />
+          <Route path="/discografia/:albumId" element={<AlbumDetalle />} />
+          <Route path="*" element={<NotFound />} />
+        </Route>
+      </Routes>
+      <Analytics />
+    </>
   )
 }
 
