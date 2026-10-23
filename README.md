@@ -41,12 +41,6 @@ GitHub Pages solo aloja archivos estáticos: no ejecuta esta API ni puede actual
 
 El formulario de ideas del footer abre Gmail con un borrador dirigido a `raul.urbanos.esteban@gmail.com`, con el concepto en el asunto y el mensaje ya escrito. La persona debe pulsar “Enviar” en Gmail para que el mensaje llegue; el sitio no almacena ni envía correos por su cuenta.
 
-## Cómo cuentan las visitas y los “me gusta”
-
-- La visita se cuenta una vez por sesión de pestaña. Navegar o recargar no suma otra; cerrar la pestaña y volver a entrar inicia otra sesión.
-- Cada sesión puede dar un único “me gusta”. El servidor conserva hashes de sesión, no el identificador original.
-- Las estadísticas de partidas son locales a cada navegador y se pueden exportar o importar desde la página de estadísticas.
-
 ## Estructura principal
 
 ```text
