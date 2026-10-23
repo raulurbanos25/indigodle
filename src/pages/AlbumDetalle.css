@@ -119,6 +119,31 @@ background: var(
   font-weight: 600;
 }
 
+/* Las páginas de álbum muestran el contenido completo al entrar; se mantienen
+   las animaciones persistentes del CD y de los fondos, pero no la entrada por partes. */
+.akelarre-page .akelarre-hero__info,
+.akelarre-page .akelarre-seccion,
+.nina-page .nina-hero__info,
+.nina-page .nina-seccion,
+.dragon-page .dragon-info,
+.dragon-page .dragon-seccion,
+.dragon-disco-layout .dragon-pista,
+.dragon-invitados .dragon-invitado,
+.nave-page .nave-info,
+.nave-page .nave-seccion,
+.nave-disco-layout .nave-pista,
+.nave-invitados li,
+.grx-page .grx-info,
+.grx-page .grx-seccion,
+.grx-disco-layout .grx-pista,
+.grx-disco-layout .grx-invitados li {
+  animation: none !important;
+}
+
+.dragon-page .dragon-info__titulo-imagen {
+  animation: none !important;
+}
+
 .album-pagina__aviso {
   margin-top: var(--space-8);
   padding: var(--space-3) var(--space-4);

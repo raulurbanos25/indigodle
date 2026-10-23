@@ -54,7 +54,14 @@ function DetalleModo({ partidas, hoy }) {
             aria-pressed={juego.id === modo.id}
             onClick={() => setElegido(juego.id)}
           >
-            <GameIcon animado={juego.iconoAnimado ?? juego.id} /> {juego.titulo}
+            <GameIcon
+              animado={
+                juego.id === 'tracklist'
+                  ? 'album-rotatorio'
+                  : juego.iconoAnimado ?? juego.id
+              }
+            />{' '}
+            {juego.titulo}
           </button>
         ))}
       </div>

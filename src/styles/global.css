@@ -65,6 +65,15 @@ ul { margin: 0; padding: 0; list-style: none; }
   padding-block: var(--space-8);
 }
 
+/* Mantiene los títulos de los modos con la tipografía editorial del juego. */
+.page.container > header > h1,
+.page.container > h1 {
+  font-family: var(--font-base);
+  font-weight: 900;
+  letter-spacing: .055em;
+  text-transform: uppercase;
+}
+
 /* Respeta a quien prefiere menos animación */
 @media (prefers-reduced-motion: reduce) {
   *,

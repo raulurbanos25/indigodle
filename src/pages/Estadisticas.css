@@ -325,6 +325,7 @@
 .stats-chip .game-icon-svg { width: 25px; height: 25px; flex: 0 0 auto; }
 .stats-chip .icono-albumes { width: 28px; height: 24px; flex: 0 0 auto; }
 .stats-chip .icono-albumes__item { top: 1px; left: 0; width: 20px; height: 20px; border-width: 1px; border-radius: 3px; }
+.stats-chip .icono-album-rotatorio { width: 25px; height: 25px; flex: 0 0 auto; border-width: 1px; border-radius: 4px; }
 
 .detalle__datos {
   display: grid;

@@ -176,6 +176,7 @@
 .how__indice-icono .game-icon-svg { width: 20px; height: 20px; }
 .how__indice-icono .icono-albumes { width: 26px; height: 20px; }
 .how__indice-icono .icono-albumes__item { top: 1px; left: 0; width: 16px; height: 16px; border-width: 1px; border-radius: 3px; }
+.how__indice-icono .icono-album-rotatorio { width: 20px; height: 20px; border-width: 1px; border-radius: 3px; }
 
 .how__indice a {
   display: flex;
@@ -281,6 +282,7 @@
 .modo__icono .game-icon-svg { width: 42px; height: 42px; }
 .modo__icono .icono-albumes { width: 42px; height: 38px; }
 .modo__icono .icono-albumes__item { top: 3px; left: 1px; width: 27px; height: 27px; border-width: 1px; border-radius: 4px; }
+.modo__icono .icono-album-rotatorio { width: 42px; height: 42px; border-width: 1px; border-radius: 6px; }
 
 .modo__resumen {
   max-width: 62ch;

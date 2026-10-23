@@ -104,7 +104,15 @@ function ComoSeJuega() {
                   navigate(`#modo-${juego.id}`)
                 }}
               >
-                <span className="how__indice-icono"><GameIcon animado={juego.iconoAnimado ?? juego.id} /></span>
+                <span className="how__indice-icono">
+                  <GameIcon
+                    animado={
+                      juego.id === 'tracklist'
+                        ? 'album-rotatorio'
+                        : juego.iconoAnimado ?? juego.id
+                    }
+                  />
+                </span>
                 <span className="how__indice-nombre">{juego.titulo}</span>
               </a>
             </li>
@@ -143,7 +151,13 @@ function ComoSeJuega() {
                 {String(i + 1).padStart(2, '0')}
               </span>
               <span className="modo__icono" aria-hidden="true">
-                <GameIcon animado={juego.iconoAnimado ?? juego.id} />
+                <GameIcon
+                  animado={
+                    juego.id === 'tracklist'
+                      ? 'album-rotatorio'
+                      : juego.iconoAnimado ?? juego.id
+                  }
+                />
               </span>
               <div>
                 <h2 id={`titulo-${juego.id}`} className="modo__titulo">

@@ -1,3 +1,4 @@
+import { useEffect, useState } from 'react'
 import './GameIcon.css'
 
 const PORTADAS_ALBUMES = [
@@ -20,6 +21,35 @@ function IconoAlbumes() {
   )
 }
 
+const PORTADAS_ROTATORIAS = [
+  { nombre: 'Aquelarre', ruta: '/covers/Akelarre.png' },
+  { nombre: 'La Niña', ruta: '/covers/La%20Ni%C3%B1a.png' },
+  { nombre: 'El Dragón', ruta: '/covers/El%20Dragon.png' },
+  { nombre: 'Nave Dragón', ruta: '/covers/Nave%20Dragon.png' },
+  { nombre: 'GRX', ruta: '/covers/grx.png' },
+  { nombre: 'La Bruja, la Niña y el Dragón', ruta: '/covers/La%20Bruja%2C%20La%20Ni%C3%B1a%20y%20El%20Dragon.png' },
+]
+
+function IconoAlbumRotatorio() {
+  const [indice, setIndice] = useState(0)
+
+  useEffect(() => {
+    if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return undefined
+    const temporizador = window.setInterval(() => {
+      setIndice((actual) => (actual + 1) % PORTADAS_ROTATORIAS.length)
+    }, 2600)
+    return () => window.clearInterval(temporizador)
+  }, [])
+
+  const portada = PORTADAS_ROTATORIAS[indice]
+
+  return (
+    <span className="icono-album-rotatorio" aria-hidden="true">
+      <img key={portada.ruta} src={portada.ruta} alt="" />
+    </span>
+  )
+}
+
 const DIBUJOS = {
   clasico: <><circle className="game-icon__ring" cx="32" cy="32" r="21"/><circle className="game-icon__ring game-icon__ring--inner" cx="32" cy="32" r="13"/><circle className="game-icon__dot" cx="32" cy="32" r="5"/><path className="game-icon__spark" d="M48 11v10m-5-5h10M12 44v8m-4-4h8"/></>,
   intruso: <><circle className="game-icon__ring" cx="28" cy="27" r="16"/><path className="game-icon__line" d="m40 39 13 13"/><path className="game-icon__spark" d="M23 25h10m-10 6h7"/></>,
@@ -35,6 +65,7 @@ const DIBUJOS = {
 
 function GameIcon({ animado }) {
   if (animado === 'albumes') return <IconoAlbumes />
+  if (animado === 'album-rotatorio') return <IconoAlbumRotatorio />
   const nombre = DIBUJOS[animado] ? animado : 'clasico'
   return (
     <svg className={`game-icon-svg game-icon-svg--${nombre}`} viewBox="0 0 64 64" fill="none" aria-hidden="true">

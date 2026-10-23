@@ -125,7 +125,9 @@
 
 /* ---------- Grupos por año (línea temporal) ---------- */
 .singles__lista {
-  animation: lista-entra 300ms ease both;
+  /* Se pintan las tarjetas al acercarse al viewport, sin entrada escalonada. */
+  content-visibility: auto;
+  contain-intrinsic-size: auto 1200px;
 }
 
 .grupo {
@@ -192,8 +194,8 @@
   display: flex;
   flex-direction: column;
   gap: var(--space-4);
-  animation: single-entra 450ms ease both;
-  animation-delay: calc(min(var(--i, 0), 12) * 50ms);
+  content-visibility: auto;
+  contain-intrinsic-size: auto 360px;
 }
 
 /* Al pasar el ratón o enfocar algo dentro: el estuche sube, se abre la tapa y el CD gira */
@@ -296,33 +298,7 @@
   }
 }
 
-/* ---------- Animaciones ---------- */
-@keyframes lista-entra {
-  from {
-    opacity: 0;
-  }
-  to {
-    opacity: 1;
-  }
-}
-
-@keyframes single-entra {
-  from {
-    opacity: 0;
-    transform: translateY(14px) scale(0.98);
-  }
-  to {
-    opacity: 1;
-    transform: none;
-  }
-}
-
 @media (prefers-reduced-motion: reduce) {
-  .singles__lista,
-  .single {
-    animation: none;
-  }
-
   .invitado {
     transition: none;
   }

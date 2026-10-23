@@ -53,9 +53,11 @@ export function useJuegoEscucha() {
   const [fecha] = useState(fechaDeHoy)
   const [guardado, setGuardado] = useState(() => cargarGuardado(fecha))
 
-  // Solo se sortean canciones que tengan MP3, estén donde estén en la lista de canciones.
-  // Si no hay ninguna, "cancion" es null.
-  const jugables = SONGS.filter((c) => AUDIO_DE[c.id].ruta)
+  // Solo se sortean canciones con MP3. Excluimos las pistas en directo del álbum 6
+  // (La Bruja, la Niña y el Dragón), pero conservamos el resto del catálogo.
+  const jugables = SONGS.filter(
+    (c) => AUDIO_DE[c.id].ruta && !(c.albumId === 'album-6' && /\blive\b/i.test(c.titulo)),
+  )
   const cancion = elementoDelDia(jugables, MODO, fecha)
   const album = cancion ? albumDe(cancion) : null
 
