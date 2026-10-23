@@ -192,7 +192,7 @@ function Album2({ album }) {
                 >
                   {disco.src && (
                     <img
-                      src={disco.src}
+                      src={disco.src} loading="eager" decoding="async"
                       alt=""
                       onLoad={disco.alCargar}
                       onError={disco.alFallar}
@@ -213,8 +213,11 @@ function Album2({ album }) {
                   <img
                     key={deluxeActiva ? 'nina-deluxe' : 'nina-original'}
                     className="nina-cd__imagen-portada"
-                    src={deluxeActiva ? '/covers/La%20Ni%C3%B1a1.png' : portada.src}
+                    src={deluxeActiva ? '/covers/La%20Ni%C3%B1a1.webp' : portada.src}
                     alt={`Portada ${deluxeActiva ? 'deluxe' : 'original'} del álbum ${album.titulo}`}
+                    loading="eager"
+                    decoding="async"
+                    fetchPriority="high"
                     onError={deluxeActiva ? undefined : portada.alFallar}
                   />
                 ) : (

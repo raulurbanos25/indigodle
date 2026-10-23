@@ -18,9 +18,9 @@ export function slugificar(texto) {
     .replace(/^-+|-+$/g, '')
 }
 
-const EXTENSIONES_CAJA = ['jpg', 'jpeg', 'png', 'webp']
-const EXTENSIONES_DISCO = ['png', 'webp', 'jpg', 'jpeg'] // el disco suele ser PNG con transparencia
-const EXTENSIONES_SINGLE = ['png', 'webp', 'jpg']
+const EXTENSIONES_CAJA = ['webp', 'jpg', 'jpeg', 'png']
+const EXTENSIONES_DISCO = ['webp', 'png', 'jpg', 'jpeg'] // WebP primero para cargar menos datos
+const EXTENSIONES_SINGLE = ['webp', 'png', 'jpg']
 const EXTENSIONES_AUDIO = ['mp3']
 
 // Rutas posibles de un archivo dentro de public/<carpeta>/.

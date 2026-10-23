@@ -2,11 +2,11 @@ import { useEffect, useState } from 'react'
 import './GameIcon.css'
 
 const PORTADAS_ALBUMES = [
-  { nombre: 'Akelarre', ruta: '/covers/Akelarre.png' },
-  { nombre: 'La Niña', ruta: '/covers/La%20Ni%C3%B1a.png' },
-  { nombre: 'El Dragón', ruta: '/covers/El%20Dragon.png' },
-  { nombre: 'Nave Dragón', ruta: '/covers/Nave%20Dragon.png' },
-  { nombre: 'GRX', ruta: '/covers/grx.png' },
+  { nombre: 'Akelarre', ruta: '/covers/Akelarre.webp' },
+  { nombre: 'La Niña', ruta: '/covers/La%20Ni%C3%B1a.webp' },
+  { nombre: 'El Dragón', ruta: '/covers/El%20Dragon.webp' },
+  { nombre: 'Nave Dragón', ruta: '/covers/Nave%20Dragon.webp' },
+  { nombre: 'GRX', ruta: '/covers/grx.webp' },
 ]
 
 function IconoAlbumes() {
@@ -22,12 +22,12 @@ function IconoAlbumes() {
 }
 
 const PORTADAS_ROTATORIAS = [
-  { nombre: 'Aquelarre', ruta: '/covers/Akelarre.png' },
-  { nombre: 'La Niña', ruta: '/covers/La%20Ni%C3%B1a.png' },
-  { nombre: 'El Dragón', ruta: '/covers/El%20Dragon.png' },
-  { nombre: 'Nave Dragón', ruta: '/covers/Nave%20Dragon.png' },
-  { nombre: 'GRX', ruta: '/covers/grx.png' },
-  { nombre: 'La Bruja, la Niña y el Dragón', ruta: '/covers/La%20Bruja%2C%20La%20Ni%C3%B1a%20y%20El%20Dragon.png' },
+  { nombre: 'Aquelarre', ruta: '/covers/Akelarre.webp' },
+  { nombre: 'La Niña', ruta: '/covers/La%20Ni%C3%B1a.webp' },
+  { nombre: 'El Dragón', ruta: '/covers/El%20Dragon.webp' },
+  { nombre: 'Nave Dragón', ruta: '/covers/Nave%20Dragon.webp' },
+  { nombre: 'GRX', ruta: '/covers/grx.webp' },
+  { nombre: 'La Bruja, la Niña y el Dragón', ruta: '/covers/La%20Bruja%2C%20La%20Ni%C3%B1a%20y%20El%20Dragon.webp' },
 ]
 
 function IconoAlbumRotatorio() {

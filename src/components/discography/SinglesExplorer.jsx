@@ -19,7 +19,7 @@ function ArtistaInvitado({ nombre, onBuscar }) {
   return (
     <button type="button" className="single__artista" title={`Buscar singles con ${nombre}`} onClick={onBuscar}>
       <span className="single__avatar" aria-hidden="true">
-        {!sinFoto && <img src={fotos[indiceFoto]} alt="" loading="lazy" onError={() => {
+        {!sinFoto && <img src={fotos[indiceFoto]} alt="" loading="lazy" decoding="async" onError={() => {
           if (indiceFoto < fotos.length - 1) setIndiceFoto(indiceFoto + 1)
           else setSinFoto(true)
         }} />}

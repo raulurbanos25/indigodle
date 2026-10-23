@@ -25,6 +25,7 @@ function CdEstuche({ cancion }) {
               src={src}
               alt=""
               loading="lazy"
+              decoding="async"
               onLoad={alCargar}
               onError={alFallar}
             />

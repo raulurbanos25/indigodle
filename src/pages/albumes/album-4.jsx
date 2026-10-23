@@ -122,13 +122,13 @@ function Album4({ album }) {
               <span className="nave-cd__anillo nave-cd__anillo--dos" />
               <div className="nave-cd__disco" aria-hidden="true">
                 <div className={`nave-cd__giro ${disco.cargada ? 'nave-cd__giro--imagen' : ''}`}>
-                  {disco.src && <img src={disco.src} alt="" onLoad={disco.alCargar} onError={disco.alFallar} />}
+                  {disco.src && <img src={disco.src} loading="eager" decoding="async" alt="" onLoad={disco.alCargar} onError={disco.alFallar} />}
                 </div>
                 <span className="nave-cd__centro" />
               </div>
               <button type="button" className="nave-cd__portada" aria-pressed={abierto}
                 aria-label={abierto ? 'Guardar el CD' : 'Sacar el CD'} onClick={() => setAbierto((v) => !v)}>
-                {portada.src ? <img src={portada.src} alt={`Portada de ${album.titulo}`} onError={portada.alFallar} /> : <span>{album.titulo}</span>}
+                {portada.src ? <img src={portada.src} loading="eager" decoding="async" fetchPriority="high" alt={`Portada de ${album.titulo}`} onError={portada.alFallar} /> : <span>{album.titulo}</span>}
               </button>
             </div>
           </div>

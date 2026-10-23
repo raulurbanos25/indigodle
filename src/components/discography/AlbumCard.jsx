@@ -68,6 +68,8 @@ function AlbumCard({ album, numCanciones, indice = 0 }) {
                 className="album__disc-img"
                 src={disco.src}
                 alt=""
+                loading="eager"
+                decoding="async"
                 onLoad={() => setDiscoListo(true)}
                 onError={disco.alFallar}
               />
@@ -82,7 +84,9 @@ function AlbumCard({ album, numCanciones, indice = 0 }) {
               className="album__img"
               src={portada.src}
               alt=""
-              loading="lazy"
+              loading="eager"
+              decoding="async"
+              fetchPriority={indice === 0 ? 'high' : 'auto'}
               onError={portada.alFallar}
             />
           )}

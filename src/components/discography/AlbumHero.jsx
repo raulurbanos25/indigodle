@@ -29,6 +29,8 @@ function AlbumHero({ album, tono }) {
                 className="hero-disco__img-cd"
                 src={disco.src}
                 alt=""
+                loading="eager"
+                decoding="async"
                 onLoad={disco.alCargar}
                 onError={disco.alFallar}
               />
@@ -52,6 +54,9 @@ function AlbumHero({ album, tono }) {
               className="hero-disco__img"
               src={portada.src}
               alt=""
+              loading="eager"
+              decoding="async"
+              fetchPriority="high"
               onError={portada.alFallar}
             />
           )}
